@@ -9,6 +9,8 @@ interfere with any others.
 
 ## Usage
 
+Some quick examples of how to use tote.
+
 ### Create a namespaced instance
 
 ```js
