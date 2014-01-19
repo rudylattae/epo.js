@@ -1,4 +1,4 @@
-describe('epo', function() {
+describe('tote', function() {
 
     function getItemFromLocalStorage( key ) {
         return localStorage.getItem( key );
@@ -9,30 +9,28 @@ describe('epo', function() {
         var ls;
 
         it('initializes with a namespace', function() {
-            ls = epo('mystash');
+            ls = tote('mystash');
 
             expect( ls ).not.toBeNull();
         });
 
         it('initializes without a namespace', function() {
-            ls = epo();
+            ls = tote();
 
             expect( ls ).not.toBeNull();
         });
 
         it('throws exception, given a null namespace', function() {
-            
             function createWithNullNamespace() {
-                ls = epo(null);
+                ls = tote(null);
             }
 
             expect( createWithNullNamespace ).toThrow();
         });
 
         it('throws exception, given an empty string namespace', function() {
-            
             function createWithEmptyStringNamespace() {
-                ls = epo('');
+                ls = tote('');
             }
 
             expect( createWithEmptyStringNamespace ).toThrow();
@@ -44,7 +42,7 @@ describe('epo', function() {
         var ls;
 
         beforeEach(function() {
-            ls = epo('myarea');
+            ls = tote('myarea');
         });
 
         it('#set, writes values with namespaced key', function() {
@@ -84,7 +82,7 @@ describe('epo', function() {
         var ls;
 
         beforeEach(function() {
-            ls = epo();
+            ls = tote();
         });
 
         it('#set, writes values with key as-is', function() {
@@ -135,7 +133,7 @@ describe('epo', function() {
         var ls;
 
         beforeEach(function() {
-            ls = epo('mystrings');
+            ls = tote('mystrings');
         });
 
         it('persists and retrieves simple string', function() {

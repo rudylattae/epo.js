@@ -3,38 +3,38 @@
     var storageAdapter = g.localStorage;
 
 
-    function epo( namespace ) {
+    function tote( namespace ) {
         if ( namespace === null || namespace === '' ) throw new Error('null is not a valid namespace');
-        return new Epo( namespace );
+        return new Bag( namespace );
     }
 
 
-    function Epo( namespace ) {
+    function Bag( namespace ) {
         this._ns = namespace;
     }
 
-    Epo.prototype.set = function set( key, value ) {
+    Bag.prototype.set = function set( key, value ) {
         storageAdapter.setItem( this._nsKey(key), value );
     };
 
-    Epo.prototype.get = function get( key ) {
+    Bag.prototype.get = function get( key ) {
         return storageAdapter.getItem( this._nsKey(key) );
     };
 
-    Epo.prototype.remove = function remove( key ) {
+    Bag.prototype.remove = function remove( key ) {
         return storageAdapter.removeItem( this._nsKey(key) );
     };
 
-    Epo.prototype.clear = function clear() {
+    Bag.prototype.clear = function clear() {
         return storageAdapter.clear();
     };
 
-    Epo.prototype._nsKey = function _nsKey( key ) {
+    Bag.prototype._nsKey = function _nsKey( key ) {
         if ( !this._ns ) return key;
         return this._ns + '-' + key; 
     };
 
 
     // exports
-    g.epo = epo;
+    g.tote = tote;
 }( window ));

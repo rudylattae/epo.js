@@ -1,4 +1,6 @@
-epo.js
+tote
 ======
 
 Thin namespaced wrapper for localStorage
+
+
