@@ -8,13 +8,13 @@ describe('epo', function() {
     describe('when creating', function() {
         var ls;
 
-        it('initializes with namespace', function() {
+        it('initializes with a namespace', function() {
             ls = epo('mystash');
 
             expect( ls ).not.toBeNull();
         });
 
-        it('initializes without namespace', function() {
+        it('initializes without a namespace', function() {
             ls = epo();
 
             expect( ls ).not.toBeNull();
@@ -90,6 +90,18 @@ describe('epo', function() {
             ls.set(key, value);
 
             expect( ls.get(key) ).toEqual( value );
+        });
+
+        it('#clear, removes all persisted data from localStorage', function() {
+            ls.set('a', 'AAA');
+            ls.set('b', 'BBB');
+            ls.set('c', 'CCC');
+
+            ls.clear();
+
+            expect( ls.get('a') ).toBeNull();
+            expect( ls.get('b') ).toBeNull();
+            expect( ls.get('c') ).toBeNull();
         });
     });
 

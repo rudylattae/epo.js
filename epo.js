@@ -9,7 +9,6 @@
     }
 
 
-
     function Epo( namespace ) {
         this._ns = namespace;
     }
@@ -20,6 +19,10 @@
 
     Epo.prototype.get = function get( key ) {
         return storageAdapter.getItem( this._nsKey(key) );
+    };
+
+    Epo.prototype.clear = function clear() {
+        return storageAdapter.clear();
     };
 
     Epo.prototype._nsKey = function _nsKey( key ) {
