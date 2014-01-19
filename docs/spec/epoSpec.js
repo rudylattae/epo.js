@@ -28,6 +28,15 @@ describe('epo', function() {
 
             expect( createWithNullNamespace ).toThrow();
         });
+
+        it('throws exception, given an empty string namespace', function() {
+            
+            function createWithEmptyStringNamespace() {
+                ls = epo('');
+            }
+
+            expect( createWithEmptyStringNamespace ).toThrow();
+        });
     });
 
 
