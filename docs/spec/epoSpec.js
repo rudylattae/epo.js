@@ -26,6 +26,7 @@ describe('epo', function() {
 
         beforeEach(function() {
             ls = epo('strings');
+            localStorage.clear();
         });
 
         it('persists and retrieves simple string', function() {
