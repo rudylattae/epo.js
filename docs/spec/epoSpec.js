@@ -64,6 +64,19 @@ describe('epo', function() {
 
             expect( ls.get(key) ).toEqual( value );
         });
+
+        it('#remove, deletes value associated with namespaced key', function() {
+            var key1 = 'getridofthis',
+                key2 = 'leavealone',
+                value = 'Will be gone soon';
+            ls.set(key1, value);
+            ls.set(key2, value);
+
+            ls.remove(key1);
+            
+            expect( ls.get(key1) ).toBeNull();
+            expect( ls.get(key2) ).toEqual( value );
+        });
     });
 
 
@@ -92,14 +105,17 @@ describe('epo', function() {
             expect( ls.get(key) ).toEqual( value );
         });
 
-        it('#remove, deletes value associated with give key', function() {
-            var key = 'removethis',
-                value = 'To be deleted';
-            ls.set(key, value);
+        it('#remove, deletes value associated with given key', function() {
+            var key1 = 'removethis',
+                key2 = 'donttouchthis',
+                value = 'To be or not to be deleted?';
+            ls.set(key1, value);
+            ls.set(key2, value);
 
-            ls.remove(key);
+            ls.remove(key1);
             
-            expect( ls.get(key) ).toBeNull();
+            expect( ls.get(key1) ).toBeNull();
+            expect( ls.get(key2) ).toEqual( value );
         });
 
         it('#clear, removes all persisted data from localStorage', function() {
