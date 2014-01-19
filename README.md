@@ -3,9 +3,7 @@
 > Thin namespaced wrapper for localStorage
 
 With tote you may interact with localStorage as though it is a bunch of small containers 
-where you stash specific things. 
-
-Each "namespaced" instance of tote writes to the same underlying data store, but does not 
+where you stash specific things. Each "namespaced" instance of tote writes to the same underlying data store, but does not 
 interfere with any others.
 
 
