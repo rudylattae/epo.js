@@ -21,6 +21,10 @@
         return storageAdapter.getItem( this._nsKey(key) );
     };
 
+    Epo.prototype.remove = function remove( key ) {
+        return storageAdapter.removeItem( this._nsKey(key) );
+    };
+
     Epo.prototype.clear = function clear() {
         return storageAdapter.clear();
     };

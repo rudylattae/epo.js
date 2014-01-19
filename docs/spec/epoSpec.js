@@ -92,6 +92,16 @@ describe('epo', function() {
             expect( ls.get(key) ).toEqual( value );
         });
 
+        it('#remove, deletes value associated with give key', function() {
+            var key = 'removethis',
+                value = 'To be deleted';
+            ls.set(key, value);
+
+            ls.remove(key);
+            
+            expect( ls.get(key) ).toBeNull();
+        });
+
         it('#clear, removes all persisted data from localStorage', function() {
             ls.set('a', 'AAA');
             ls.set('b', 'BBB');
