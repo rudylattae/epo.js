@@ -30,10 +30,17 @@ var theme = prefs.get('theme');
 // 'something'
 ```
 
-### Delete what you don't care about anymore
+### Delete stuff
 
 ```js
 prefs.remove('theme');
 prefs.get('theme');
 // undefined
 ```
+
+## API
+
+- set(key, value)
+- get(key)
+- remove(key)
+
