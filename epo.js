@@ -4,6 +4,7 @@
 
 
     function epo( namespace ) {
+        if (namespace === null) throw new Error('null is not a valid namespace');
         return new Epo( namespace );
     }
 

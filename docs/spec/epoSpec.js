@@ -19,6 +19,15 @@ describe('epo', function() {
 
             expect( ls ).not.toBeNull();
         });
+
+        it('throws exception, given a null namespace', function() {
+            
+            function createWithNullNamespace() {
+                ls = epo(null);
+            }
+
+            expect( createWithNullNamespace ).toThrow();
+        });
     });
 
 
