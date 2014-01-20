@@ -75,6 +75,26 @@ describe('tote', function() {
             expect( ls.get(key1) ).toBeNull();
             expect( ls.get(key2) ).toEqual( value );
         });
+
+        it('#clear, removes only values associated with self', function() {
+            var lsOther = tote('another'),
+                key1 = 'one',
+                key2 = 'two',
+                value1 = 'First value',
+                value2 = 'Second value';
+            ls.set(key1, value1);
+            ls.set(key2, value2);
+            lsOther.set(key1, value1);
+            lsOther.set(key2, value2);
+
+            ls.clear();
+            
+            expect( ls.get(key1) ).toBeNull();
+            expect( ls.get(key2) ).toBeNull();
+            
+            expect( lsOther.get(key1) ).toEqual( value1 );
+            expect( lsOther.get(key2) ).toEqual( value2 );
+        });
     });
 
 
