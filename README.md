@@ -9,21 +9,21 @@ interfere with any others.
 
 ## Usage
 
-Some quick examples of how to use tote.
+### Basic examples to get you started
 
-### Create a namespaced instance
+#### Create a namespaced instance
 
 ```js
 var prefs = tote('preferences');
 ```
 
-### Stash some data
+#### Stash some data
 
 ```js
 prefs.set('theme', 'something');
 ```
 
-### Retrieve what you stored
+#### Retrieve what you stored
 
 tote deserializes your stored data back to the original data type
 
@@ -32,7 +32,7 @@ var theme = prefs.get('theme');
 // 'something'
 ```
 
-### Delete stuff
+#### Delete stuff
 
 ```js
 prefs.remove('theme');
