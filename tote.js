@@ -20,6 +20,7 @@
             var keys = index.all(),
                 i=0,
                 z=keys.length;
+
             for(; i<z; i++) {
                 key = keys[i];
                 store.removeItem(namespacedKey(key));
@@ -40,6 +41,22 @@
             removeItem: function removeItem(key) {
                 store.removeItem(namespacedKey(key));
                 index.remove(key);
+            },
+
+            all: function all() {
+                var items = [],
+                    item = {},
+                    keys = index.all(),
+                    i=0,
+                    z=keys.length;
+
+                for(; i<z; i++) {
+                    key = keys[i];
+                    item = {};
+                    item[key] = store.getItem(namespacedKey(key));
+                    items.push(item);
+                }
+                return items;
             },
 
             clear: function clear() {

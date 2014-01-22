@@ -80,6 +80,21 @@ describe('tote', function() {
             expect( ls.get(key2) ).toEqual( value );
         });
 
+        it('#all, returns an array of all the key-value pairs stored in namespace', function() {
+            var item1 = {'a':'Me'},
+                item2 = {'b':'You'}
+                key2 = 'you',
+                value1 = 'Happy',
+                value2 = 'Happier';
+            ls.set('a', item1.a);
+            ls.set('b', item2.b);
+
+            var all = ls.all();
+            
+            expect( all[0] ).toEqual( item1 );
+            expect( all[1] ).toEqual( item2 );
+        });
+
         it('#clear, removes only values associated with self', function() {
             var lsOther = tote('another'),
                 key1 = 'one',
