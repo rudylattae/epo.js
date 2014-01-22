@@ -28,22 +28,6 @@
             index.clear();
         }
 
-        function asCompact(key, value) {
-            var item = {};
-            item[key] = value;
-            return item;
-        }
-
-        function asKvp(key, value) {
-            return {key: key, value: value};
-        }
-
-        function getFormatter(format) {
-            if (format && format.compact) return asCompact;
-            if (format && format.kvp) return asKvp;
-            return null;
-        }
-
         var wrapper = {
             setItem: function setItem(key, value) {
                 index.add(key);
@@ -140,6 +124,26 @@
             }
         };
     }
+
+
+    function getFormatter(format) {
+        if (format && format.compact) return formatters.asCompact;
+        if (format && format.kvp) return formatters.asKvp;
+        return null;
+    }
+
+    var formatters = {
+        asCompact: function asCompact(key, value) {
+            var item = {};
+            item[key] = value;
+            return item;
+        },
+
+        asKvp: function asKvp(key, value) {
+            return {key: key, value: value};
+        }
+    };
+
 
     // exports
     tote.createIndex = createIndex;
