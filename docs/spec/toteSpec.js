@@ -150,6 +150,17 @@ describe('tote', function() {
             ls.remove(key1);
             expect( ls.length() ).toEqual( 1 );
         });
+
+        it('#key(n), returns the name of the nth key in storage', function() {
+            var key1 = 'n1',
+                key2 = 'n2',
+                value = 'access by position';
+            ls.set(key1, value);
+            ls.set(key2, value);
+   
+            expect( ls.key(0) ).toEqual( key1 );
+            expect( ls.key(1) ).toEqual( key2 );
+        });
     });
 
 
