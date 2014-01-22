@@ -77,10 +77,23 @@ prefs.all({kvp:true})
 */
 ```
 
+#### If you need to, you may nuke the entire bunch
+
+```js
+prefs.clear();
+prefs.get('logo');
+// null  
+prefs.all()
+// []
+```
+
 
 ## API
 
 - set(key, value)
 - get(key)
 - remove(key)
-
+- all()
+-- all({compact:true})
+-- all({kvp:true})
+- clear()
