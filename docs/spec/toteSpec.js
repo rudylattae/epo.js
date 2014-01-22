@@ -37,7 +37,7 @@ describe('tote', function() {
     });
 
 
-    describe('available api', function() {
+    describe('api', function() {
         var ls;
 
         beforeEach(function() {

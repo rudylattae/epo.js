@@ -90,9 +90,9 @@ prefs.all()
 
 ## API
 
-- set(key, value)
-- get(key)
-- remove(key)
+- set(key, value) || setItem(key, value)
+- get(key) || getItem(key)
+- remove(key) || removeItem(key)
 - all()
 -- all({compact:true})
 -- all({kvp:true})
