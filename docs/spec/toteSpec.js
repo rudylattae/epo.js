@@ -137,6 +137,19 @@ describe('tote', function() {
             expect( lsOther.get(key1) ).toEqual( value1 );
             expect( lsOther.get(key2) ).toEqual( value2 );
         });
+
+        it('#length, returns the number of items stored', function() {
+            var key1 = 'item1',
+                key2 = 'item2',
+                value = 'Just counting';
+            ls.set(key1, value);
+            ls.set(key2, value);
+   
+            expect( ls.length() ).toEqual( 2 );
+
+            ls.remove(key1);
+            expect( ls.length() ).toEqual( 1 );
+        });
     });
 
 
