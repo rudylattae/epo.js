@@ -8,14 +8,13 @@ describe('tote', function() {
     describe('when creating', function() {
         var ls;
 
-        it('initializes with a namespace', function() {
-            ls = tote('mystash');
-
-            expect( ls ).not.toBeNull();
+        afterEach(function() {
+            ls.clear();
         });
 
-        it('initializes without a namespace', function() {
-            ls = tote();
+
+        it('initializes with a namespace', function() {
+            ls = tote('mystash');
 
             expect( ls ).not.toBeNull();
         });
@@ -38,12 +37,17 @@ describe('tote', function() {
     });
 
 
-    describe('namespaced instance', function() {
+    describe('general usage of an instance', function() {
         var ls;
 
         beforeEach(function() {
             ls = tote('myarea');
         });
+
+        afterEach(function() {
+            ls.clear();
+        });
+
 
         it('#set, writes values with namespaced key', function() {
             var key = 'foo',
@@ -98,63 +102,17 @@ describe('tote', function() {
     });
 
 
-    describe('non-namespaced instance', function() {
-        var ls;
-
-        beforeEach(function() {
-            ls = tote();
-        });
-
-        it('#set, writes values with key as-is', function() {
-            var key = 'mysimplekey',
-                value = 'A Key!!!';
-
-            ls.set(key, value);
-
-            expect( getItemFromLocalStorage(key) ).toEqual( value );
-        });
-
-        it('#get, retrieves values with key as-is', function() {
-            var key = 'barybarfed',
-                value = 'Barfy Barfed';
-
-            ls.set(key, value);
-
-            expect( ls.get(key) ).toEqual( value );
-        });
-
-        it('#remove, deletes value associated with given key', function() {
-            var key1 = 'removethis',
-                key2 = 'donttouchthis',
-                value = 'To be or not to be deleted?';
-            ls.set(key1, value);
-            ls.set(key2, value);
-
-            ls.remove(key1);
-            
-            expect( ls.get(key1) ).toBeNull();
-            expect( ls.get(key2) ).toEqual( value );
-        });
-
-        it('#clear, removes all persisted data from localStorage', function() {
-            ls.set('a', 'AAA');
-            ls.set('b', 'BBB');
-            ls.set('c', 'CCC');
-
-            ls.clear();
-
-            expect( ls.get('a') ).toBeNull();
-            expect( ls.get('b') ).toBeNull();
-            expect( ls.get('c') ).toBeNull();
-        });
-    });
-
     describe('when handling strings', function() {
         var ls;
 
         beforeEach(function() {
             ls = tote('mystrings');
         });
+
+        afterEach(function() {
+            ls.clear();
+        });
+
 
         it('persists and retrieves simple string', function() {
             var key = 'simple',

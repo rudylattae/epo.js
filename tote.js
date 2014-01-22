@@ -1,96 +1,115 @@
 (function(g) {
 
-    function tote( namespace, options ) {
-        if ( namespace === null || namespace === '' ) throw new Error('null is not a valid namespace');
+    function tote( name, options ) {
+        if (!name || name === '') throw new Error('A tote must have a non-empty namespace');
+
         var options = options || {},
             storageAdapter = options.storageAdapter || g.localStorage,
-            tracker = new Tracker( namespace, storageAdapter)
-        return new Bag( namespace, storageAdapter, tracker );
+            index = options.index || createIndex(name, storageAdapter);
+            
+        return createStorageWrapper(name, storageAdapter, index);
     }
 
 
-    function Bag( namespace, storage, tracker ) {
-        this._ns = namespace;
-        this._store = storage;
-        this._index = tracker;
+    function createStorageWrapper(name, store, index) {
+        function namespacedKey(key) {
+            return name + '-' + key; 
+        }
+
+        function clearAllTrackedItems() {
+            var keys = index.all(),
+                i=0,
+                z=keys.length;
+            for(; i<z; i++) {
+                key = keys[i];
+                store.removeItem(namespacedKey(key));
+            }
+            index.clear();
+        }
+
+        var wrapper = {
+            setItem: function setItem(key, value) {
+                index.add(key);
+                store.setItem(namespacedKey(key), value);
+            },
+
+            getItem: function getItem(key) {
+                return store.getItem(namespacedKey(key));
+            },
+
+            removeItem: function removeItem(key) {
+                store.removeItem(namespacedKey(key));
+                index.remove(key);
+            },
+
+            clear: function clear() {
+                clearAllTrackedItems();
+            },
+
+            key: function key(pos) {
+                return index.getKeyAt(pos)
+            },
+
+            length: function length() {
+                return index.length();
+            }
+        };
+        wrapper.set = wrapper.setItem;
+        wrapper.get = wrapper.getItem;
+        wrapper.remove = wrapper.removeItem;
+
+        return wrapper;
     }
 
-    Bag.prototype.set = function set( key, value ) {
-        this._index.add( key );
-        this._store.setItem( this._namespacedKey(key), value );
-    };
 
-    Bag.prototype.get = function get( key ) {
-        return this._store.getItem( this._namespacedKey(key) );
-    };
+    function createIndex(name, store) {
+        var keys = [];
 
-    Bag.prototype.remove = function remove( key ) {
-        this._store.removeItem( this._namespacedKey( key ) );
-        this._index.remove( key );
-    };
-
-    Bag.prototype.clear = function clear() {
-        if ( !this._ns ) this._store.clear();
-        else {
-            this._clearAllTrackedItems();
+        function refresh() {
+            var trackingKeys = store.getItem(name);
+            keys = (trackingKeys && trackingKeys.split(',')) || [];
         }
-    };
 
-    Bag.prototype._clearAllTrackedItems = function _clearAllTrackedItems() {
-        var keys = this._index.all(),
-            i=0,
-            z=keys.length;
-        for(; i<z; i++) {
-            key =  keys[i];
-            this._store.removeItem( this._namespacedKey( key ) );
+        function saveState() {
+            store.setItem(name, keys.join(","));   
         }
-        this._index.clear();
-    };
 
-    Bag.prototype._namespacedKey = function _namespacedKey( key ) {
-        if ( !this._ns ) return key;
-        return this._ns + '-' + key; 
-    };
+        return {
+            add: function add(key) {
+                if (keys.indexOf(key) < 0 ) {
+                    keys.push(key);
+                    saveState();
+                }
+            },
 
+            remove: function remove(key) {
+                var idx = keys.indexOf(key);
+                if (idx !== -1) keys.splice(idx, 1);
+                saveState();
+            },
 
-    function Tracker( name, storage ) {
-        this._name = name;
-        this._store = storage;
-        this._keys = [];
+            all: function all() {
+                return keys;
+            },
+
+            clear: function clear() {
+                store.removeItem(name);
+                refresh();
+            },
+
+            length: function length() {
+                return keys.length;
+            },
+
+            getKeyAt: function getKeyAt(pos) {
+                return keys[pos];
+            }
+        };
     }
-
-    Tracker.prototype.refresh = function() {
-        var trackingKeys = this._store.getItem(this._name);
-        this._keys = (trackingKeys && trackingKeys.split(',')) || [];
-    };
-
-    Tracker.prototype.all = function() {
-        return this._keys;    
-    };
-
-    Tracker.prototype.add = function( key ) {
-        if (this._keys.indexOf(key) < 0 ) {
-            this._keys.push(key);
-            this._saveState();
-        }
-    };
-
-    Tracker.prototype.remove = function( key ) {
-        var index = this._keys.indexOf(key);
-        if (index !== -1) this._keys.splice(index, 1);
-        this._saveState();
-    };
-
-    Tracker.prototype.clear = function() {
-        this._store.removeItem(this._name);
-        this.refresh();
-    };
-
-    Tracker.prototype._saveState = function save() {
-        this._store.setItem(this._name, this._keys.join(","));   
-    };
-
 
     // exports
+    tote.createIndex = createIndex;
+    tote.createStorageWrapper = createStorageWrapper;
+
     g.tote = tote;
 }( window ));
