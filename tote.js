@@ -28,6 +28,12 @@
             index.clear();
         }
 
+        function toJSObject(key, value) {
+            var item = {};
+            item[key] = value;
+            return item;
+        }
+
         var wrapper = {
             setItem: function setItem(key, value) {
                 index.add(key);
@@ -52,9 +58,8 @@
 
                 for(; i<z; i++) {
                     key = keys[i];
-                    item = {};
-                    item[key] = store.getItem(namespacedKey(key));
-                    items.push(item);
+                    
+                    items.push( toJSObject(key, store.getItem(namespacedKey(key))) );
                 }
                 return items;
             },
