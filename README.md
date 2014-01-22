@@ -49,14 +49,21 @@ prefs.set('color2', '#555');
 prefs.set('language', 'es');
 ```
 
-#### Get all stashed items as compact list of objects...
+#### Get all stored values as a list..
 
 ```js
 prefs.all()
+// ["http://example.com/my/logo.png", "#ddd", "#555", "es"]
+```
+
+#### Get all stored keys and values as a compact list of objects [{key:value}, ]...
+
+```js
+prefs.all({compact:true})
 // [logo: "http://example.com/my/logo.png", color1: "#ddd", color2: "#555", language: "es"]
 ```
 
-#### ... or a list of key-value pairs
+#### ... or a list of key-value pairs [{key:'KEY', value:'VALUE'}, ]
 
 ```js
 prefs.all({kvp:true})

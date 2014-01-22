@@ -80,13 +80,27 @@ describe('tote', function() {
             expect( ls.get(key2) ).toEqual( value );
         });
 
-        it('#all, returns an array of a compact representation of all items', function() {
+        it('#all, returns an array of all values', function() {
+            var key1 = 'x',
+                value1 = 'The simple things',
+                key2 = 'y',
+                value2 = 'Are free?';
+            ls.set(key1, value1);
+            ls.set(key2, value2);
+
+            var all = ls.all();
+            
+            expect( all[0] ).toEqual( value1 );
+            expect( all[1] ).toEqual( value2 );
+        });
+
+        it('#all({compact:true}), returns an array of a compact representation of all items', function() {
             var item1 = {'a':'Me'},
                 item2 = {'b':'You'};
             ls.set('a', item1.a);
             ls.set('b', item2.b);
 
-            var all = ls.all();
+            var all = ls.all({compact:true});
             
             expect( all[0] ).toEqual( item1 );
             expect( all[1] ).toEqual( item2 );

@@ -38,6 +38,12 @@
             return {key: key, value: value};
         }
 
+        function getFormatter(format) {
+            if (format && format.compact) return asCompact;
+            if (format && format.kvp) return asKvp;
+            return null;
+        }
+
         var wrapper = {
             setItem: function setItem(key, value) {
                 index.add(key);
@@ -55,17 +61,17 @@
 
             all: function all(format) {
                 var items = [],
-                    item = {},
                     keys = index.all(),
                     i=0,
-                    z=keys.length;
+                    z=keys.length,
+                    formatter = getFormatter(format);
 
                 for(; i<z; i++) {
                     key = keys[i];
-                    if (format && format.kvp)
-                        items.push( asKvp(key, store.getItem(namespacedKey(key))) );
+                    if (format)
+                        items.push( formatter(key, store.getItem(namespacedKey(key))) );
                     else
-                        items.push( asCompact(key, store.getItem(namespacedKey(key))) );
+                        items.push( store.getItem(namespacedKey(key)) );
                 }
                 return items;
             },
