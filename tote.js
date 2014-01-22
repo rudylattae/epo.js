@@ -36,7 +36,7 @@
 
             getItem: function getItem(key) {
                 var value = store.getItem(namespacedKey(key))
-                return value && JSON.parse(value);
+                return value && value === 'undefined' ? value : JSON.parse(value);
             },
 
             removeItem: function removeItem(key) {
