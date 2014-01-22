@@ -49,11 +49,25 @@ prefs.set('color2', '#555');
 prefs.set('language', 'es');
 ```
 
-#### See all you have stashed
+#### Get all stashed items as compact list of objects...
 
 ```js
 prefs.all()
 // [logo: "http://example.com/my/logo.png", color1: "#ddd", color2: "#555", language: "es"]
+```
+
+#### ... or a list of key-value pairs
+
+```js
+prefs.all({kvp:true})
+/*
+[
+    { key: "logo", value: "http://example.com/my/logo.png" },
+    { key: "color1", value: "#ddd" }, 
+    { key: "color2", value: "#555" }, 
+    { key: "language", value: "es" }
+]
+*/
 ```
 
 

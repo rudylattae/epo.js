@@ -28,10 +28,14 @@
             index.clear();
         }
 
-        function toJSObject(key, value) {
+        function asCompact(key, value) {
             var item = {};
             item[key] = value;
             return item;
+        }
+
+        function asKvp(key, value) {
+            return {key: key, value: value};
         }
 
         var wrapper = {
@@ -49,7 +53,7 @@
                 index.remove(key);
             },
 
-            all: function all() {
+            all: function all(format) {
                 var items = [],
                     item = {},
                     keys = index.all(),
@@ -58,8 +62,10 @@
 
                 for(; i<z; i++) {
                     key = keys[i];
-                    
-                    items.push( toJSObject(key, store.getItem(namespacedKey(key))) );
+                    if (format && format.kvp)
+                        items.push( asKvp(key, store.getItem(namespacedKey(key))) );
+                    else
+                        items.push( asCompact(key, store.getItem(namespacedKey(key))) );
                 }
                 return items;
             },
