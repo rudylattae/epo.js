@@ -179,7 +179,7 @@ describe('tote', function() {
         });
 
 
-        it('persists and retrieves simple string', function() {
+        it('persists and retrieves a simple string', function() {
             var key = 'string-simple',
                 value = 'Simple String';
 
@@ -188,7 +188,7 @@ describe('tote', function() {
             expect( ls.get(key) ).toEqual( value );
         });
 
-        it('persists and retrieves string with crazy characters', function() {
+        it('persists and retrieves a string with crazy characters', function() {
             var key = 'string-complex',
                 value = 'Some overly c\'omplex string/ with "quoted" and *strred* and & etc...';
 
