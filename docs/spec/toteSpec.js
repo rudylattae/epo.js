@@ -37,7 +37,7 @@ describe('tote', function() {
     });
 
 
-    describe('general usage of an instance', function() {
+    describe('available api', function() {
         var ls;
 
         beforeEach(function() {
@@ -140,7 +140,7 @@ describe('tote', function() {
     });
 
 
-    describe('when handling strings', function() {
+    describe('handling different datatypes', function() {
         var ls;
 
         beforeEach(function() {
