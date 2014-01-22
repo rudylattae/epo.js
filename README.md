@@ -49,14 +49,14 @@ prefs.set('color2', '#555');
 prefs.set('language', 'es');
 ```
 
-#### Get all stored values as a list..
+#### Get all stored values as a list...
 
 ```js
 prefs.all()
 // ["http://example.com/my/logo.png", "#ddd", "#555", "es"]
 ```
 
-#### Get all stored keys and values as a compact list of objects [{key:value}, ]...
+#### ... or a compact list of key,value objects [{key:value}, ]...
 
 ```js
 prefs.all({compact:true})
