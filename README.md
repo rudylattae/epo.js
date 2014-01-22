@@ -28,7 +28,7 @@ prefs.set('theme', 'something');
 tote deserializes your stored data back to the original data type
 
 ```js
-var theme = prefs.get('theme');
+prefs.get('theme');
 // 'something'
 ```
 
@@ -37,8 +37,25 @@ var theme = prefs.get('theme');
 ```js
 prefs.remove('theme');
 prefs.get('theme');
-// undefined
+// null
 ```
+
+#### Add some more stuff
+
+```js
+prefs.set('logo', 'http://example.com/my/logo.png');
+prefs.set('color1', '#ddd');
+prefs.set('color2', '#555');
+prefs.set('language', 'es');
+```
+
+#### See all you have stashed
+
+```js
+prefs.all()
+// [logo: "http://example.com/my/logo.png", color1: "#ddd", color2: "#555", language: "es"]
+```
+
 
 ## API
 
