@@ -31,11 +31,12 @@
         var wrapper = {
             setItem: function setItem(key, value) {
                 index.add(key);
-                store.setItem(namespacedKey(key), value);
+                store.setItem( namespacedKey(key), JSON.stringify(value) );
             },
 
             getItem: function getItem(key) {
-                return store.getItem(namespacedKey(key));
+                var value = store.getItem(namespacedKey(key))
+                return value && JSON.parse(value);
             },
 
             removeItem: function removeItem(key) {
@@ -53,9 +54,9 @@
                 for(; i<z; i++) {
                     key = keys[i];
                     if (format)
-                        items.push( formatter(key, store.getItem(namespacedKey(key))) );
+                        items.push( formatter(key, this.getItem(key)) );
                     else
-                        items.push( store.getItem(namespacedKey(key)) );
+                        items.push( this.getItem(key) );
                 }
                 return items;
             },

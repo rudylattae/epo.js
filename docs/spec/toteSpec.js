@@ -49,13 +49,13 @@ describe('tote', function() {
         });
 
 
-        it('#set, writes values with namespaced key', function() {
+        it('#set, writes serialized values with namespaced key', function() {
             var key = 'foo',
                 value = 'FOO!!!';
 
             ls.set(key, value);
 
-            expect( getItemFromLocalStorage('myarea-foo') ).toEqual( value );
+            expect( getItemFromLocalStorage('myarea-foo') ).toEqual( '"' + value + '"' );
         });
 
         it('#get, retrieves values with namespaced key', function() {
@@ -144,7 +144,7 @@ describe('tote', function() {
         var ls;
 
         beforeEach(function() {
-            ls = tote('mystrings');
+            ls = tote('datatypes');
         });
 
         afterEach(function() {
@@ -169,5 +169,16 @@ describe('tote', function() {
 
             expect( ls.get(key) ).toEqual( value );
         });
+
+
+        it('persists and retrieves a number', function() {
+            var key = 'number',
+                value = 23434;
+
+            ls.set(key, value);
+
+            expect( ls.get(key) ).toEqual( value );
+        });
+
     });
 });
