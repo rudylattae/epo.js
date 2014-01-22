@@ -136,6 +136,9 @@ describe('tote', function() {
             
             expect( lsOther.get(key1) ).toEqual( value1 );
             expect( lsOther.get(key2) ).toEqual( value2 );
+
+            // cleanup
+            lsOther.clear();
         });
 
         it('#length, returns the number of items stored', function() {
@@ -242,6 +245,18 @@ describe('tote', function() {
         it('persists and retrieves an object', function() {
             var key = 'obj',
                 value = {id:2, name:'Jolted Zoo', age:45, 'here':true};
+
+            ls.set(key, value);
+
+            expect( ls.get(key) ).toEqual( value );
+        });
+
+        it('persists and retrieves an array', function() {
+            var key = 'array',
+                value = [
+                    {id:1, name:'Yellow Pellet', age:23, 'here':false},
+                    {id:2, name:'Jolted Zoo', age:45, 'here':true}
+                ];
 
             ls.set(key, value);
 
