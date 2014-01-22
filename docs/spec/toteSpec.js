@@ -239,5 +239,14 @@ describe('tote', function() {
             expect( ls.get(key) ).toEqual( value );
         });
 
+        it('persists and retrieves an object', function() {
+            var key = 'obj',
+                value = {id:2, name:'Jolted Zoo', age:45, 'here':true};
+
+            ls.set(key, value);
+
+            expect( ls.get(key) ).toEqual( value );
+        });
+
     });
 });
