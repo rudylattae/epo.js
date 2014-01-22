@@ -153,7 +153,7 @@ describe('tote', function() {
 
 
         it('persists and retrieves simple string', function() {
-            var key = 'simple',
+            var key = 'string-simple',
                 value = 'Simple String';
 
             ls.set(key, value);
@@ -162,7 +162,7 @@ describe('tote', function() {
         });
 
         it('persists and retrieves string with crazy characters', function() {
-            var key = 'complex',
+            var key = 'string-complex',
                 value = 'Some overly c\'omplex string/ with "quoted" and *strred* and & etc...';
 
             ls.set(key, value);
@@ -170,10 +170,45 @@ describe('tote', function() {
             expect( ls.get(key) ).toEqual( value );
         });
 
-
-        it('persists and retrieves a number', function() {
-            var key = 'number',
+        it('persists and retrieves a positive number', function() {
+            var key = 'number-positive',
                 value = 23434;
+
+            ls.set(key, value);
+
+            expect( ls.get(key) ).toEqual( value );
+        });
+
+        it('persists and retrieves a negative number', function() {
+            var key = 'number-negative',
+                value = -4747;
+
+            ls.set(key, value);
+
+            expect( ls.get(key) ).toEqual( value );
+        });
+
+        it('persists and retrieves a float', function() {
+            var key = 'number-float',
+                value = 3700.894;
+
+            ls.set(key, value);
+
+            expect( ls.get(key) ).toEqual( value );
+        });
+
+        it('persists and retrieves a boolean true', function() {
+            var key = 'bool-true',
+                value = true;
+
+            ls.set(key, value);
+
+            expect( ls.get(key) ).toEqual( value );
+        });
+
+        it('persists and retrieves a boolean false', function() {
+            var key = 'bool-false',
+                value = false;
 
             ls.set(key, value);
 
