@@ -56,3 +56,4 @@ gulp.task('dev', ['lint', 'package'], function() {
 });
 
 gulp.task('default', ['package']);
+gulp.task('release', ['tag']);
