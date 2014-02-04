@@ -1,6 +1,6 @@
 {
   "name": "tote",
-  "version": "0.2.0-a",
+  "version": "0.2.1-a",
   "description": "Thin namespaced wrapper for localStorage",
   "main": "tote.js",
   "scripts": {
