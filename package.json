@@ -25,6 +25,9 @@
     "url": "https://github.com/rudylattae/tote/issues"
   },
   "devDependencies": {
-    "gulp": "~3.5.1"
+    "gulp": "~3.5.1",
+    "gulp-rename": "~0.2.2",
+    "gulp-uglify": "~0.2.0",
+    "gulp-concat": "~2.1.7"
   }
 }
