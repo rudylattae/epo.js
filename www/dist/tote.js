@@ -1,10 +1,13 @@
 (function(g) {
+    'use strict';
 
     function tote( name, options ) {
-        if (!name || name === '') throw new Error('A tote must have a non-empty namespace');
+        if (!name || name === '')
+            throw new Error('A tote must have a non-empty namespace');
 
-        var options = options || {},
-            storageAdapter = options.storageAdapter || g.localStorage,
+        options = options || {};
+
+        var storageAdapter = options.storageAdapter || g.localStorage,
             index = options.index || createIndex(name, storageAdapter);
             
         return createStorageWrapper(name, storageAdapter, index);
@@ -13,13 +16,14 @@
 
     function createStorageWrapper(name, store, index) {
         function namespacedKey(key) {
-            return name + '-' + key; 
+            return name + '-' + key;
         }
 
         function clearAllTrackedItems() {
             var keys = index.all(),
                 i=0,
-                z=keys.length;
+                z=keys.length,
+                key;
 
             for(; i<z; i++) {
                 key = keys[i];
@@ -35,7 +39,7 @@
             },
 
             getItem: function getItem(key) {
-                var value = store.getItem(namespacedKey(key))
+                var value = store.getItem(namespacedKey(key));
                 return value && value === 'undefined' ? value : JSON.parse(value);
             },
 
@@ -49,7 +53,8 @@
                     keys = index.all(),
                     i=0,
                     z=keys.length,
-                    formatter = getFormatter(format);
+                    formatter = getFormatter(format),
+                    key;
 
                 for(; i<z; i++) {
                     key = keys[i];
@@ -66,7 +71,7 @@
             },
 
             key: function key(pos) {
-                return index.getKeyAt(pos)
+                return index.getKeyAt(pos);
             },
 
             length: function length() {
@@ -90,7 +95,7 @@
         }
 
         function saveState() {
-            store.setItem(name, keys.join(","));   
+            store.setItem(name, keys.join(','));
         }
 
         return {
