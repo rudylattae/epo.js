@@ -1,4 +1,5 @@
 (function(g) {
+    'use strict';
 
     function tote( name, options ) {
         if (!name || name === '') throw new Error('A tote must have a non-empty namespace');
