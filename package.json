@@ -1,0 +1,30 @@
+{
+  "name": "tote",
+  "version": "0.2.0-a",
+  "description": "Thin namespaced wrapper for localStorage",
+  "main": "tote.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rudylattae/tote.git"
+  },
+  "keywords": [
+    "tote",
+    "localStorage",
+    "browser",
+    "storage",
+    "data",
+    "namespace",
+    "namespaced"
+  ],
+  "author": "Rudy Lattae <rudylattae@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rudylattae/tote/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.5.1"
+  }
+}
