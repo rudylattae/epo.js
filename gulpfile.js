@@ -60,8 +60,8 @@ gulp.task('website', function() {
     });
 });
 
-gulp.task('dev', ['package'], function() {
-    gulp.watch(paths.allJs, ['package']);
+gulp.task('dev', ['package', 'website'], function() {
+    gulp.watch(paths.allJs, ['package', 'website']);
 });
 
 gulp.task('default', ['package', 'website']);
