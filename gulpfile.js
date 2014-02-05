@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    exec = require('exec'),
     jshint = require('gulp-jshint'),
     bump = require('gulp-bump'),
     git = require('gulp-git'),
@@ -12,13 +13,13 @@ var gulp = require('gulp'),
 var paths = {
     pkg: './package.json',
     src: './tote.js',
-    all: [ 'gulpfile.js', './tote.js' ],
+    allJs: [ './gulpfile.js', './tote.js', './www/spec/toteSpec.js' ],
     dist: './www/dist'
 };
 
 
 gulp.task('lint', function() {
-    return gulp.src(paths.src)
+    return gulp.src(paths.allJs)
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -41,7 +42,7 @@ gulp.task('tag', function () {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('package', function() {
+gulp.task('package', ['lint'], function() {
     return gulp.src(paths.src)
         .pipe(concat(pkg.name + '.js'))
         .pipe(gulp.dest(paths.dist))
@@ -51,9 +52,16 @@ gulp.task('package', function() {
         .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('dev', ['lint', 'package'], function() {
-    gulp.watch(paths.all, ['lint', 'package']);
+gulp.task('website', function() {
+    exec(['harp', 'compile', 'www', '_www'], function(err, out, code) {
+        if (err) throw err;
+        process.stdout.write( out );
+    });
 });
 
-gulp.task('default', ['package']);
+gulp.task('dev', ['package'], function() {
+    gulp.watch(paths.allJs, ['package']);
+});
+
+gulp.task('default', ['package', 'website']);
 gulp.task('release', ['tag']);
