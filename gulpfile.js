@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp'),
     exec = require('exec'),
     jshint = require('gulp-jshint'),
@@ -31,13 +33,12 @@ gulp.task('bump', function() {
 });
 
 gulp.task('tag', function () {
-    var pkg = require(paths.pkg),
-        ver = 'v' + pkg.version,
-        msg = 'Release ' + v;
+    var version = 'v' + pkg.version,
+        message = 'Release ' + version;
 
     return gulp.src('./')
-        .pipe(git.commit(msg))
-        .pipe(git.tag(v, msg))
+        .pipe(git.commit(message))
+        .pipe(git.tag(version, message))
         .pipe(git.push('origin', 'master', '--tags'))
         .pipe(gulp.dest('./'));
 });
@@ -53,7 +54,7 @@ gulp.task('package', ['lint'], function() {
 });
 
 gulp.task('website', function() {
-    exec(['harp', 'compile', 'www', '_www'], function(err, out, code) {
+    exec(['harp', 'compile', 'www', '_www'], function(err, out) {
         if (err) throw err;
         process.stdout.write( out );
     });
