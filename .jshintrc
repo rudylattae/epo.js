@@ -19,7 +19,12 @@
   "node": true,
   "globals": {
     "window": true,
+    "localStorage": true,
     "describe": true,
-    "it": true
+    "it": true,
+    "expect": true,
+    "afterEach": true,
+    "beforeEach": true,
+    "tote": true
   }
 }

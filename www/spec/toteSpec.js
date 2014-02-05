@@ -1,5 +1,6 @@
 describe('tote', function() {
-
+    'use strict';
+    
     function getItemFromLocalStorage( key ) {
         return localStorage.getItem( key );
     }
