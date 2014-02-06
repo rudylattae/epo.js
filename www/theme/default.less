@@ -1,20 +1,19 @@
-@import 'normalize.less';
-
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
 
+@import 'normalize.less';
+@import 'preboot.less';
 
-.cf {
-    &:before,
-    &:after {
-        content: " "; /* 1 */
-        display: table; /* 2 */
-    }
-    &:after {
-        clear: both;
-    }
-    zoom: 1;
+/* ======================== */
+
+
+.container {
+    .clearfix;
+    .center-block;
+    width: 48em;
 }
 
+
+/* ======================== */
 
 html {
     font-family: 'Source Sans Pro', sans-serif;
@@ -24,11 +23,6 @@ html {
 }
 
 body {
-    &>header>.banner, &>main>aside, &>main>article, &>footer>p {
-        margin: 0 auto;
-        width: 48em;
-    }
-
     &>header {
         height: 5em;
         background: #42474b;

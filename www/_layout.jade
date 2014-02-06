@@ -3,11 +3,11 @@ html
   head
     meta(name="viewport", content="width=device-width")
     title="tote - Thin namespaced wrapper for localStorage"
-    link(rel="stylesheet", href="main.css" media="screen")
+    link(rel="stylesheet", href="theme/default.css" media="screen")
   body
 
     header
-      .banner.cf
+      .banner.container
         p.brand tote
         nav.main
           ul
@@ -16,7 +16,7 @@ html
             li
               a(href="https://github.com/rudylattae/tote") Github
     main
-      aside.cf
+      aside.container
         section.blurb
           p This is BIG!
 
@@ -27,8 +27,9 @@ html
                 console.log(me);
             ```
 
-      article
+      article.container
         !=yield
 
     footer
-      p Copyright &copy; ...
+      .container
+        Copyright &copy; ...
