@@ -2,6 +2,7 @@
 
 @import 'normalize.less';
 @import 'preboot.less';
+@import 'prism.css';
 
 /* ======================== */
 
@@ -10,6 +11,11 @@
     .clearfix;
     .center-block;
     width: 48em;
+}
+
+.row {
+    .make-row;
+    .container;
 }
 
 
@@ -22,6 +28,7 @@ html {
     -webkit-font-smoothing: antialiased
 }
 
+
 body {
     &>header {
         height: 5em;
@@ -31,14 +38,14 @@ body {
 }
 
 .brand {
+    .make-column(8);
     font-size: 3.8em;
-    float: left;
     margin: 0;
     padding: 0;
 }
 
 nav.main {
-    float: right;
+    .make-column(4);
     margin-top: 2em;
     ul {
         list-style: none;
@@ -56,3 +63,22 @@ nav.main {
         text-decoration: none;
     }
 }
+
+
+main {
+    &>aside {
+        height: 15em;
+        &>section {
+            height: 100%;
+        }
+    }
+}
+
+.blurb {
+    .make-column(6);
+    font-size: 2em;
+}
+.quickstart {
+    .make-column(6);
+}
+

@@ -2,12 +2,13 @@
 html
   head
     meta(name="viewport", content="width=device-width")
-    title="tote - Thin namespaced wrapper for localStorage"
+    title="tote - A thin namespaced wrapper for localStorage"
     link(rel="stylesheet", href="theme/default.css" media="screen")
+    script(src="prism.js", type="text/javascript")
   body
 
     header
-      .banner.container
+      .row
         p.brand tote
         nav.main
           ul
@@ -16,15 +17,17 @@ html
             li
               a(href="https://github.com/rudylattae/tote") Github
     main
-      aside.container
+      aside.row
         section.blurb
-          p This is BIG!
+          p A thin namespaced wrapper for localStorage
 
-        section.example
+        section.quickstart
           :markdown
             ```javascript
-                var me;
-                console.log(me);
+                var prefs = tote('preferences');
+                prefs.set('theme', 'something');
+                prefs.get('theme');
+                // 'something'
             ```
 
       article.container
