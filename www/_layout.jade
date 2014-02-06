@@ -1,7 +1,34 @@
 !!!
 html
   head
+    meta(name="viewport", content="width=device-width")
     title="tote - Thin namespaced wrapper for localStorage"
-    link(rel="stylesheet", href="main.css")
+    link(rel="stylesheet", href="main.css" media="screen")
   body
-    !=yield
+
+    header
+      .banner.cf
+        p.brand tote
+        nav.main
+          ul
+            li
+              a(href="spec/") Specs
+            li
+              a(href="https://github.com/rudylattae/tote") Github
+    main
+      aside.cf
+        section.blurb
+          p This is BIG!
+
+        section.example
+          :markdown
+            ```javascript
+                var me;
+                console.log(me);
+            ```
+
+      article
+        !=yield
+
+    footer
+      p Copyright &copy; ...
