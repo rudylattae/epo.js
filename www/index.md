@@ -1,12 +1,7 @@
 
-## Download
-
-[Latest release](dist/tote.js) [minified](dist/tote.min.js)
-
-
 ## Tests
 
-See your current browser can run the [specs](spec/). 
+[Run](spec/) the specs in your current browser
 
 
 ## Performance 

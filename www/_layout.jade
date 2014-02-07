@@ -1,27 +1,29 @@
 !!!
 html
   head
-    meta(name="viewport", content="width=device-width")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title="tote - A thin namespaced wrapper for localStorage"
     link(rel="stylesheet", href="theme/default.css" media="screen")
     script(src="prism.js", type="text/javascript")
   body
 
     header
-      .row
-        p.brand tote
-        nav.main
+      .row.centered
+        .brand.col-6 tote
+        nav.main.col-6
           ul
             li
               a(href="spec/") Specs
             li
-              a(href="https://github.com/rudylattae/tote") Github
-    main
-      aside.row
-        section.blurb
+              a(href="https://github.com/rudylattae/tote") GitHub
+
+
+    .preface
+      .row.centered
+        section.blurb.col-6
           p A thin namespaced wrapper for localStorage
 
-        section.quickstart
+        section.quickstart.col-6
           :markdown
             ```javascript
                 var prefs = tote('preferences');
@@ -30,9 +32,28 @@ html
                 // 'something'
             ```
 
-      article.container
-        !=yield
+      .row.centered
+        section.overview.col-6
+          p.
+            tote enables you to interact with localStorage as though it is a bunch of 
+            small containers where you stash specific things. Each "namespaced" instance 
+            writes to the same underlying data store, but does not interfere with any others.
+
+        section.download.col-6
+          h3 Download the latest version
+          p 
+            small v0.2.1-a released Feb 4 2004
+          a(class="btn" href="dist/tote.js") Download Full
+          a(class="btn" href="dist/tote.min.js") Download Minified
+
+
+    main
+      .row.centered
+        article.col-12
+          !=yield
+
 
     footer
-      .container
-        Copyright &copy; ...
+      .row.centered
+        .col-12 
+          small Copyright &copy; 2014 Rudy Lattae | MIT License
