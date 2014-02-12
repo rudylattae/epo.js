@@ -5,8 +5,14 @@ since it is still officially in alpha, you should not use it in production.*
 
 <dl class="well">
     <dt>Status</dt><dd>In active development</dd>
-    <dt>Latest release</dt><dd>v0.2.1-a (Feb 4 2004)</dd>
-    <dt>License</dt><dd>Open Source -- **MIT**</dd>
+    <dt>License</dt><dd>Open Source -- MIT</dd>
+    <dt>Version</dt><dd>v0.2.1-a | <date>Feb 4 2004</date></dd>
+    <dt>Download</dt>
+    <dd>
+        <a href="dist/tote.js">Development ()</a>&nbsp;&nbsp;
+        <a href="dist/tote.min.js">Minified ()</a>
+    </dd>
+    <dt>Install</dt><dd><small>Coming soon! Bower, Component, Npm, NuGet...</small><dd>
 </dl>
 
 The source code is available on [GitHub](https://github.com/rudylattae/tote) which is also the
@@ -17,64 +23,100 @@ milestones, checkout the [Huboard](https://huboard.com/rudylattae/tote).
 ## Features
 
 - Use localStorage through isolated containers -- namespaces
-- What you store is what you get -- ints, bools, lists, objects, string (of course)...
+- What you store is what you get -- Number, Boolean, Object, Array, String (of course)...
 - Simple API, about seven (7) methods with some compatibility aliases to boot.
 
 
+## <a name="quickstart"></a>Quickstart
 
-## Installation and supported environments
+Here are some pointers to get you up and running with `†ote` with no fuss.
 
-<small class="muted"> Bower and AMD/CJS support comming soon.</small>
+### Install
 
-### Classic
+Kicking old school? Simply download the latest release:
 
-Download the loatest release and include the script in your html:
+<a href="dist/tote.js" class="btn btn-primary">Download Full</a>
+<a href="dist/tote.min.js" class="btn">Download Minified</a>
 
+OR install it:
+
+<small class="muted">Bower and Component support coming soon.</small>
+
+### Import
+
+If you want to use `tote` as a regular browser global, just include it in your webpage:
 
 ```markup
 <script src="lib/tote.js" type="text/javascript"></script>
 ```
 
-<small>v0.2.1-a released Feb 4 2004</small>
+OR if you are an an environment with module a loader...
 
-<a href="dist/tote.js" class="btn btn-primary">Download Full</a>
-<a href="dist/tote.min.js" class="btn">Download Minified</a>
+<small class="muted">AMD / CJS support coming soon.</small>
 
 
-## Basic usage
+### Basic usage example
 
-Let's see how we could use `tote` to store some user preferences.
+By way of a made-up example, let's pretend we need to store some user preferences.
 
 ```javascript
 // Create a namespaced instance
 var prefs = tote('settings');
 
-// Stash an int
-items.set('', 'Blazing Hoofs');
-items.set('theme', 'Blazing Hoofs');
+// Store a number
+prefs.set('count', 500);
 
 // Retrieve what you stored, as the original data type
-prefs.get('theme');
-// 'something'
+console.log( prefs.get('count') );
+// 500 <-- it is an Integer!
 
-// Delete stuff
-prefs.remove('theme');
-prefs.get('theme');
+// Store some more numbers
+prefs.set('cost', 35.99);
+prefs.set('temperature', -25);
+
+// Take a look at what you have so far
+console.log( prefs.get('cost') );
+// 35.99
+
+console.log( prefs.get('temperature') );
+// -25
+
+// Okay, now throw in a Boolean and a String
+prefs.set('isActive', true);
+prefs.set('fullName', 'Blazing Hoofs');
+
+// Now look at the loot
+console.log( prefs.all() );
+// [500, 35.99, -25, true, "Blazing Hoofs"] 
+
+// Delete one thing
+prefs.remove('count');
+console.log( prefs.get('count') );
 // null
 
-// Add some more stuff
-prefs.set('logo', 'http://example.com/my/logo.png');
-prefs.set('language', 'es');
-prefs.set('total', 4560);
-prefs.set('average', 22.45);
-prefs.set('isActive', true);
+// Get rid of some more stuff
+prefs.remove('temperature');
+prefs.remove('fullName');
+
+// So finally what are we left with?
+console.log( prefs.all() );
+// [35.99, true]
 ```
 
-## Speed and efficiency 
-
-[See how it performs](http://jsperf.com/tote-vs-native-storage) against the native (non-namespaced) localStorage.
+That's it! Continue reading for details on the API.
 
 
-## Tests
+## <a name="api"></a>API
 
-[Run](spec/) the specs in your current browser
+- set(key, value) || setItem(key, value)
+- get(key) || getItem(key)
+- remove(key) || removeItem(key)
+- all()
+-- all({compact:true})
+-- all({kvp:true})
+- clear()
+- length()
+- key(n)
+
+
+

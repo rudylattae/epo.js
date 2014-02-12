@@ -10,11 +10,17 @@ html
 
     header
       .row.centered
-        .logo.col-6 tote
-        nav.main.col-6
+        .logo.col-4 tote
+        nav.main.col-8
           ul
             li
+              a(href="./#quickstart") Quickstart
+            li
+              a(href="./#api") API
+            li
               a(href="spec/") Specs
+            li
+              a(href="http://jsperf.com/tote-vs-native-storage") Performance
             li
               a(href="https://github.com/rudylattae/tote") GitHub
 
@@ -22,23 +28,24 @@ html
     .preface
       .row.centered
         section.col-6
-          p.tagline A thin namespaced wrapper for localStorage
+          p.tagline A thin namespaced localStorage API.
           p.blurb.
-            Use localStorage as though it is a bunch of small containers for specific areas of your app.
-            As a bonus, you are free to store and retrive any datatype -- not just strings!
+            tote is a tiny JavaScript library that turns localStorage into isolated containers. 
+            You can store multiple sets of data in the same app without fear of key collisions.
+          p As a bonus, you get to store and retrive Integer, Strings, Booleans, whatever -- not just strings!
 
         section.synopsis.col-6
           :markdown
             ```javascript
-            var prefs = tote('settings');
+            var about = tote('about-tote');
 
-            prefs.set('enableSync', true);
-            prefs.get('enableSync');
+            about.set('tags', ['simple', 'tiny']);
+            console.log( about.get('tags') );
+            // ['simple', 'tiny']
+
+            about.set('isActive', true);
+            console.log( about.get('isActive') );
             // true
-
-            prefs.remove('enableSync');
-            prefs.get('enableSync');
-            // null
             ```
 
       .row.centered

@@ -155,11 +155,12 @@ small {
   }
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:visited {
   background-color: darken(@brand-primary, 10%);
   color: @black-20;
   border-color: darken(@brand-primary, 5%);
-
+}
+.btn-primary {
   &:hover, &:active, &:focus {
     color: @black-90;
     text-decoration: none;
@@ -259,13 +260,11 @@ nav.main {
 }
 
 .tagline {
-  font-size: 1.8em;
+  font-size: 1.3em;
   color: @blurb-text-color;
   p {
     margin: 0.8em 0;
   }
-}
-.synopsis {
 }
 
 code {
@@ -299,8 +298,7 @@ code {
   }
 
   nav.main {
-    font-size: 1.2em;
-    margin-top: 1.5em;
+    margin-top: 1.8em;
     &>ul {
       float: right;
     }
