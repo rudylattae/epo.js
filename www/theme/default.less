@@ -1,8 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
 
-@import 'normalize.less';
-@import 'preboot.less';
-@import 'prism.css';
+@import '../lib/normalize.less';
+@import '../lib/preboot.less';
+
+
+@import '../lib/prism.css';
 
 
 /* ======================== */
@@ -82,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
   color: @brand-secondary;
 }
 h2 {
-  margin-top: 2.2em;
+  margin-top: 1.2em;
 }
 
 em, strong {
@@ -106,9 +108,6 @@ a {
 dl {
   padding: 0.5em;
 
-  dt {
-    font-size: 0.9em;
-  }
   dt:after {
     content: ":";
   }
@@ -119,13 +118,69 @@ dl {
   }
 }
 
+code {
+  font-size: 0.85em;
+}
+
 small {
   color: @brand-muted;
+}
+
+.muted {
+  color: @brand-muted;
+
+  a {
+    color: darken(@link-color, 10%);
+    text-decoration: none;
+
+    &:visited {
+      color: darken(@link-color-visited, 30%);
+    }
+
+    &:hover, &:active, &:focus {
+      color: darken(@link-color-hover, 10%);
+      text-decoration: underline;
+    }
+  }
 }
 
 .well {
   .inner-shadow;
   border-radius: 0.3em;
+}
+
+.note {
+  padding-left: 0.5em;
+  border-left: 0.2em solid @brand-secondary;
+}
+
+.note.note-info {
+  border-color: @brand-info;
+}
+.note.note-warning {
+  border-color: @brand-warning;
+}
+.note.note-danger {
+  border-color: @brand-danger;
+}
+
+.note-info {
+  color: @brand-info;
+  em, strong {
+    color: @brand-info;
+  }
+}
+.note-warning {
+  color: @brand-warning;
+  em, strong {
+    color: @brand-warning;
+  }
+}
+.note-danger {
+  color: @brand-danger;
+  em, strong {
+    color: @brand-danger;
+  }
 }
 
 .btn {
@@ -252,6 +307,10 @@ nav.main {
     li {
       margin-right: 1.2em;
       float: left;
+
+      iframe {
+        display: inline-block;
+      }
     }
     li:last-child {
       margin-right: 0;
@@ -267,8 +326,8 @@ nav.main {
   }
 }
 
-code {
-  font-size: 1em;
+.synopsis {
+
 }
 
 
@@ -282,7 +341,7 @@ code {
     dt {
       float: left;
       clear: left;
-      width: 10em;
+      width: 6em;
       text-align: right;
       display: inline-block;
     }
@@ -290,7 +349,9 @@ code {
       content: ":";
     }
     dd {
+      font-size: 0.85em;
       margin-left: 1em;
+      margin-bottom: 0.2em;
       display: inline-block;
       float: left;
       clear: right;

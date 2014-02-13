@@ -1,23 +1,31 @@
-## Pulse
+## Synopsis
 
-*IMPORTANT: tote is mostly feature complete and the API is resonably stable. However,
-since it is still officially in alpha, you should not use it in production.*
+To use tote, first [download/install it](#quickstart) then include it in your markup/code.
+Here is a simple example showing how to use tote to access localStorage.
 
-<dl class="well">
-    <dt>Status</dt><dd>In active development</dd>
-    <dt>License</dt><dd>Open Source -- MIT</dd>
-    <dt>Version</dt><dd>v0.2.1-a | <date>Feb 4 2004</date></dd>
-    <dt>Download</dt>
-    <dd>
-        <a href="dist/tote.js">Development ()</a>&nbsp;&nbsp;
-        <a href="dist/tote.min.js">Minified ()</a>
-    </dd>
-    <dt>Install</dt><dd><small>Coming soon! Bower, Component, Npm, NuGet...</small><dd>
-</dl>
+```javascript
+var about = tote('about-tote');
 
-The source code is available on [GitHub](https://github.com/rudylattae/tote) which is also the
-tracker for issues. To see the roadmap, i.e. current issues being worked on and upcoming 
-milestones, checkout the [Huboard](https://huboard.com/rudylattae/tote).
+about.set('tags', ['simple', 'tiny']);
+console.log( about.get('tags') );
+// ['simple', 'tiny']
+
+about.set('isActive', true);
+console.log( about.get('isActive') );
+// true
+
+about.remove('isActive');
+console.log( about.get('isActive') );
+// null
+```
+
+<p class="note note-info">
+This site will always include an active copy of the latest version of tote. So if you want to 
+try out any of the examples here, just open up your browser developer console and copy/paste 
+the example.
+</p>
+
+It's like a "try before you buy" feature -- minus the *buy* part cos it is **FREE!** :) 
 
 
 ## Features
@@ -33,14 +41,12 @@ Here are some pointers to get you up and running with `†ote` with no fuss.
 
 ### Install
 
-Kicking old school? Simply download the latest release:
-
-<a href="dist/tote.js" class="btn btn-primary">Download Full</a>
-<a href="dist/tote.min.js" class="btn">Download Minified</a>
+Kicking it old school? Simply download the latest release: <a href="dist/tote.js">Full</a>
+/ <a href="dist/tote.min.js">Minified</a>
 
 OR install it:
 
-<small class="muted">Bower and Component support coming soon.</small>
+<small class="muted">coming soon.</small>
 
 ### Import
 
@@ -57,7 +63,7 @@ OR if you are an an environment with module a loader...
 
 ### Basic usage example
 
-By way of a made-up example, let's pretend we need to store some user preferences.
+As an example, let's pretend we need to store some user preferences.
 
 ```javascript
 // Create a namespaced instance
@@ -103,20 +109,31 @@ console.log( prefs.all() );
 // [35.99, true]
 ```
 
-That's it! Continue reading for details on the API.
+That's it! The full API (all 7 methods!) are documented below.
 
 
 ## <a name="api"></a>API
 
-- set(key, value) || setItem(key, value)
-- get(key) || getItem(key)
-- remove(key) || removeItem(key)
-- all()
--- all({compact:true})
--- all({kvp:true})
-- clear()
-- length()
-- key(n)
+<p class="note note-info">
+<strong>Coming soon<strong>.
+</p>
+
+#### set(key, value) || setItem(key, value)
+
+#### get(key) || getItem(key)
+
+#### remove(key) || removeItem(key)
+
+#### all()
+
+- all({compact:true})
+- all({kvp:true})
+
+#### clear()
+
+#### length()
+
+#### key(n)
 
 
 
