@@ -53,14 +53,14 @@
   max-width: 48em;
 }
 
-.col-4 {
-  .make-column(4);
+.col-3 {
+  .make-column(3);
 }
 .col-6 {
   .make-column(6);
 }
-.col-8 {
-  .make-column(8);
+.col-9 {
+  .make-column(9);
 }
 .col-12 {
   .make-column(12);
@@ -197,7 +197,10 @@ small {
   color: @black-50;
   background-color: @black-70;
 
-  &:visited, &:hover, &:active, &:focus {
+  &, &:visited {
+  }
+
+  &:hover, &:focus {
     text-decoration: none;
     color: @black-80;
     font-weight: bold;
@@ -337,11 +340,11 @@ nav.main {
 
   dl {
     .clearfix;
-
+    height: 13.2em;
     dt {
       float: left;
       clear: left;
-      width: 6em;
+      width: 30%;
       text-align: right;
       display: inline-block;
     }
@@ -351,10 +354,11 @@ nav.main {
     dd {
       font-size: 0.85em;
       margin-left: 1em;
-      margin-bottom: 0.2em;
+      margin-bottom: 0.5em;
       display: inline-block;
       float: left;
       clear: right;
+      width: 60%;
     }
   }
 

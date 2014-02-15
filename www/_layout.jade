@@ -10,17 +10,15 @@ html
 
     header
       .row.centered
-        .logo.col-4 tote
-        nav.main.col-8
+        .logo.col-3 tote
+        nav.main.col-9
           ul
+            li
+              a(href="./#about") About
             li
               a(href="./#quickstart") Quickstart
             li
               a(href="./#api") API
-            li
-              a(href="spec/") Specs
-            li
-              a(href="http://jsperf.com/tote-vs-native-storage") Performance
             li
               a(href="https://github.com/rudylattae/tote") GitHub
             li
@@ -30,20 +28,31 @@ html
     .preface
       .row.centered
         section.col-12
+          p.tagline A thin namespaced localStorage API.
+
           p.note.note-danger
             strong IMPORTANT: 
             | tote is not yet stable so you should not use it in production. If you like what you see so far,
             | star it on GitHub so I know you want to use it.
 
         section.col-6
-          p.tagline A thin namespaced localStorage API.
-          
-          p.blurb.
-            tote is a tiny JavaScript library that turns localStorage into isolated containers. 
-            You can store multiple sets of data in the same app without fear of key collisions.
-          
-          p As a bonus, you get to store and retrive Integer, Strings, Booleans, whatever -- not just strings!
-          
+          :markdown
+            ```javascript
+            var about = tote('about-tote');
+
+            about.set('tags', ['simple', 'tiny']);
+            console.log( about.get('tags') );
+            // ['simple', 'tiny']
+
+            about.set('isActive', true);
+            console.log( about.get('isActive') );
+            // true
+
+            about.remove('isActive');
+            console.log( about.get('isActive') );
+            // null
+            ```
+
         section.pulse.col-6
           dl.well.muted
             dt Status
@@ -59,12 +68,16 @@ html
             dd Browser
             dt Resources
             dd
+              a(href="./spec/", title="Run the tote specs in your browser") Specs
+              , 
+              a(href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com") jsPerf
+              , 
               a(href="https://github.com/rudylattae/tote", title="Source repo and issue tracker") GitHub
               , 
               a(href="https://huboard.com/rudylattae/tote", title="Project Roadmap and Kanban board") Huboard
 
-          a(href="dist/tote.js" class="btn btn-primary") Download Full
-          a(href="dist/tote.min.js" class="btn") Download Minified
+          a(href="dist/tote.js" class="btn btn-primary") Development (4.2k)
+          a(href="dist/tote.min.js" class="btn") Minified (1.4k)
 
       .row.centered
         hr.divider
