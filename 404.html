@@ -1,11 +1,18 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tote - A thin namespaced wrapper for localStorage</title><link rel="stylesheet" href="theme/default.css" media="screen"><script src="prism.js" type="text/javascript"></script></head><body><header><div class="row centered"><div class="brand col-6">tote</div><nav class="main col-6"><ul><li><a href="spec/">Specs</a></li><li><a href="https://github.com/rudylattae/tote">GitHub</a></li></ul></nav></div></header><div class="preface"><div class="row centered"><section class="blurb col-6"><p>A thin namespaced wrapper for localStorage</p></section><section class="quickstart col-6"><pre><code class="language-javascript">    var prefs = tote(&#39;preferences&#39;);
-    prefs.set(&#39;theme&#39;, &#39;something&#39;);
-    prefs.get(&#39;theme&#39;);
-    // &#39;something&#39;</code></pre>
-</section></div><div class="row centered"><section class="overview col-6"><p>tote enables you to interact with localStorage as though it is a bunch of 
-small containers where you stash specific things. Each "namespaced" instance 
-writes to the same underlying data store, but does not interfere with any others.
-</p></section><section class="download col-6"><h3>Download the latest version</h3><p> <small>v0.2.1-a released Feb 4 2004</small></p><a href="dist/tote.js" class="btn">Download Full</a><a href="dist/tote.min.js" class="btn">Download Minified</a></section></div></div><main><div class="row centered"><article class="col-12"><h1>Oops - Busted!</h1>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tote - A thin namespaced localStorage API</title><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Maven+Pro"><link rel="stylesheet" href="theme/default.css" media="screen"><script type="text/javascript" src="dist/tote.js"></script></head><body><header><div class="row centered"><div class="logo col-3">tote</div><nav class="main col-9"><ul><li><a href="./#about">About</a></li><li><a href="./#quickstart">Quickstart</a></li><li><a href="./#api">API</a></li><li><a href="https://github.com/rudylattae/tote">GitHub</a></li><li><iframe src="http://ghbtns.com/github-btn.html?user=rudylattae&repo=tote&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20"></iframe></li></ul></nav></div></header><div class="preface"><div class="row centered"><section class="col-12"><p class="tagline">A thin namespaced localStorage API.</p><p class="note note-danger"><strong>IMPORTANT: </strong>tote is not yet stable so you should not use it in production. If you like what you see so far,
+star it on GitHub so I know you want to use it.</p></section><section class="col-6"><pre><code class="language-javascript">var about = tote(&#39;about-tote&#39;);
+
+about.set(&#39;tags&#39;, [&#39;simple&#39;, &#39;tiny&#39;]);
+console.log( about.get(&#39;tags&#39;) );
+// [&#39;simple&#39;, &#39;tiny&#39;]
+
+about.set(&#39;isActive&#39;, true);
+console.log( about.get(&#39;isActive&#39;) );
+// true
+
+about.remove(&#39;isActive&#39;);
+console.log( about.get(&#39;isActive&#39;) );
+// null</code></pre>
+</section><section class="pulse col-6"><dl class="well muted"><dt>Status</dt><dd>Unstable Aplha</dd><dt>Version</dt><dd>v0.2.2-a | <date>Feb 15 2004</date></dd><dt>License</dt><dd>Open Source -- MIT</dd><dt>Install with</dt><dd>Bower, Component... soon</dd><dt>Environments</dt><dd>Browser</dd><dt>Resources</dt><dd><a href="./spec/" title="Run the tote specs in your browser">Specs</a>, <a href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com">jsPerf</a>, <a href="https://github.com/rudylattae/tote" title="Source repo and issue tracker">GitHub</a>, <a href="https://huboard.com/rudylattae/tote" title="Project Roadmap and Kanban board">Huboard</a></dd></dl><a href="dist/tote.js" class="btn btn-primary">Development (4.2k)</a><a href="dist/tote.min.js" class="btn">Minified (1.4k)</a></section></div><div class="row centered"><hr class="divider"></div></div><main><div class="row centered"><article class="col-12"><h1>Oops - Busted!</h1>
 <h3>I could not find the page you wanted.</h3>
 <p>Please try another page or go to the <a href="./">homepage</a></p>
-</article></div></main><footer><div class="row centered"><div class="col-12"> <small>Copyright &copy; 2014 Rudy Lattae | MIT License</small></div></div></footer></body></html>
+</article></div></main><footer><div class="row centered"><div class="col-12"> <small>Copyright &copy; 2014 Rudy Lattae | MIT License</small></div></div></footer><script type="text/javascript" src="lib/prism.js"></script></body></html>

@@ -1,12 +1,173 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tote - A thin namespaced wrapper for localStorage</title><link rel="stylesheet" href="theme/default.css" media="screen"><script src="prism.js" type="text/javascript"></script></head><body><header><div class="row centered"><div class="brand col-6">tote</div><nav class="main col-6"><ul><li><a href="spec/">Specs</a></li><li><a href="https://github.com/rudylattae/tote">GitHub</a></li></ul></nav></div></header><div class="preface"><div class="row centered"><section class="blurb col-6"><p>A thin namespaced wrapper for localStorage</p></section><section class="quickstart col-6"><pre><code class="language-javascript">    var prefs = tote(&#39;preferences&#39;);
-    prefs.set(&#39;theme&#39;, &#39;something&#39;);
-    prefs.get(&#39;theme&#39;);
-    // &#39;something&#39;</code></pre>
-</section></div><div class="row centered"><section class="overview col-6"><p>tote enables you to interact with localStorage as though it is a bunch of 
-small containers where you stash specific things. Each "namespaced" instance 
-writes to the same underlying data store, but does not interfere with any others.
-</p></section><section class="download col-6"><h3>Download the latest version</h3><p> <small>v0.2.1-a released Feb 4 2004</small></p><a href="dist/tote.js" class="btn">Download Full</a><a href="dist/tote.min.js" class="btn">Download Minified</a></section></div></div><main><div class="row centered"><article class="col-12"><h2>Tests</h2>
-<p><a href="spec/">Run</a> the specs in your current browser</p>
-<h2>Performance</h2>
-<p>See how it <a href="http://jsperf.com/tote-vs-native-storage">performs</a> against the native (non-namespaced) localStorage</p>
-</article></div></main><footer><div class="row centered"><div class="col-12"> <small>Copyright &copy; 2014 Rudy Lattae | MIT License</small></div></div></footer></body></html>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tote - A thin namespaced localStorage API</title><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Maven+Pro"><link rel="stylesheet" href="theme/default.css" media="screen"><script type="text/javascript" src="dist/tote.js"></script></head><body><header><div class="row centered"><div class="logo col-3">tote</div><nav class="main col-9"><ul><li><a href="./#about">About</a></li><li><a href="./#quickstart">Quickstart</a></li><li><a href="./#api">API</a></li><li><a href="https://github.com/rudylattae/tote">GitHub</a></li><li><iframe src="http://ghbtns.com/github-btn.html?user=rudylattae&repo=tote&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20"></iframe></li></ul></nav></div></header><div class="preface"><div class="row centered"><section class="col-12"><p class="tagline">A thin namespaced localStorage API.</p><p class="note note-danger"><strong>IMPORTANT: </strong>tote is not yet stable so you should not use it in production. If you like what you see so far,
+star it on GitHub so I know you want to use it.</p></section><section class="col-6"><pre><code class="language-javascript">var about = tote(&#39;about-tote&#39;);
+
+about.set(&#39;tags&#39;, [&#39;simple&#39;, &#39;tiny&#39;]);
+console.log( about.get(&#39;tags&#39;) );
+// [&#39;simple&#39;, &#39;tiny&#39;]
+
+about.set(&#39;isActive&#39;, true);
+console.log( about.get(&#39;isActive&#39;) );
+// true
+
+about.remove(&#39;isActive&#39;);
+console.log( about.get(&#39;isActive&#39;) );
+// null</code></pre>
+</section><section class="pulse col-6"><dl class="well muted"><dt>Status</dt><dd>Unstable Aplha</dd><dt>Version</dt><dd>v0.2.2-a | <date>Feb 15 2004</date></dd><dt>License</dt><dd>Open Source -- MIT</dd><dt>Install with</dt><dd>Bower, Component... soon</dd><dt>Environments</dt><dd>Browser</dd><dt>Resources</dt><dd><a href="./spec/" title="Run the tote specs in your browser">Specs</a>, <a href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com">jsPerf</a>, <a href="https://github.com/rudylattae/tote" title="Source repo and issue tracker">GitHub</a>, <a href="https://huboard.com/rudylattae/tote" title="Project Roadmap and Kanban board">Huboard</a></dd></dl><a href="dist/tote.js" class="btn btn-primary">Development (4.2k)</a><a href="dist/tote.min.js" class="btn">Minified (1.4k)</a></section></div><div class="row centered"><hr class="divider"></div></div><main><div class="row centered"><article class="col-12"><h2><a name="about"></a>About</h2>
+<p>tote is a tiny JavaScript library that turns localStorage into isolated containers. 
+Use multiple totes in the same app, with minimal overhead and no fear of key collisions.</p>
+<h3>Features</h3>
+<ul>
+<li>Use localStorage through isolated containers -- namespaces</li>
+<li>What you store is what you get -- Number, Boolean, Object, Array, String (of course)...</li>
+<li>Simple API, about seven (7) methods with some compatibility aliases to boot.</li>
+</ul>
+<h2><a name="quickstart"></a>Quickstart</h2>
+<p class="note note-info">
+This site includes a copy of the latest version of tote. So you may try out any of the 
+examples on the site, right in your browser console. It&#39;s like a &quot;try before you buy&quot; feature
+-- minus the <em>buy</em> part &#39;cos it is <strong>FREE!</strong>
+</p>
+
+<p>To use tote, first download/install it then include it in your markup/code.
+Here are some pointers to get you up and running with <code>†ote</code> with no fuss.</p>
+<h3>Download / Install</h3>
+<p>Kicking it old school? Simply download the latest release: <a href="dist/tote.js">Full</a>
+/ <a href="dist/tote.min.js">Minified</a></p>
+<p>OR install it:</p>
+<p><small class="muted">coming soon.</small></p>
+<h3>Import</h3>
+<p>If you want to use <code>tote</code> as a regular browser global, just include it in your webpage:</p>
+<pre><code class="language-markup">&lt;script src=&quot;lib/tote.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
+<p>OR if you are an an environment with module a loader...</p>
+<p><small class="muted">AMD / CJS support coming soon.</small></p>
+<h3>Basic usage example</h3>
+<p>In the following made-up example, we will pretend we need to store some user preferences
+for an awesome application.</p>
+<pre><code class="language-javascript">// Create a namespaced instance
+var prefs = tote(&#39;settings&#39;);
+
+// For the purposes of this example, let&#39;s clean house
+prefs.clear();
+// deletes all the values stored in this namespace
+
+// Confirm that we have nothing
+console.log( prefs.length() );
+// 0 &lt;-- See, I told you!
+
+// Okay, now we store a number (I don&#39;t know what its for)
+prefs.set(&#39;count&#39;, 500);
+
+// Retrieve what we stored, as the original data type
+console.log( prefs.get(&#39;count&#39;) );
+// 500 &lt;-- Kyaa! it is an Integer!
+
+// Store some more numbers
+prefs.set(&#39;cost&#39;, 35.99);
+prefs.set(&#39;temperature&#39;, -25);
+
+// Take a look at what we have so far
+console.log( prefs.get(&#39;cost&#39;) );
+// 35.99
+console.log( prefs.get(&#39;temperature&#39;) );
+// -25
+
+// At this point, the number of items in our tote has gone up a bit
+console.log( prefs.length() );
+// 3 &lt;-- It&#39;s a decent number, could go much higher
+
+
+// Okay, it&#39;s time to jazz it up a bit with a Boolean and a String
+prefs.set(&#39;isActive&#39;, true);
+prefs.set(&#39;fullName&#39;, &#39;Blazing Hoofs&#39;);
+
+// Now, say we want to see EVERYTHING in our tote
+console.log( prefs.all() );
+// [500, 35.99, -25, true, &quot;Blazing Hoofs&quot;] 
+console.log( prefs.length() );
+// 5 &lt;-- Good going, we are stuffing out tote full of goodies!
+
+
+// So far we had some fun putting stuff in our tote,
+// but it&#39;s getting heavy so we want to take some items out. 
+// How?
+// It&#39;s simple. Say you are tired of the `count`. 
+// Just reach in an toss it.
+prefs.remove(&#39;count&#39;);
+console.log( prefs.get(&#39;count&#39;) );
+// null &lt;-- Gasp! We really chucked it eh?
+
+// Now let&#39;s just go crazy and get rid of some more stuff.
+prefs.remove(&#39;temperature&#39;);
+prefs.remove(&#39;fullName&#39;);
+
+// What are we left with?
+console.log( prefs.all() );
+// [35.99, true]
+console.log( prefs.length() );
+// 2 &lt;-- Nice, the tote is not too heavy and not too light, just right.
+
+
+// Oh, I almost forgot. Here&#39;s another neat thing you can do.
+// You can figure out the key for the value at position &#39;n&#39;. Like this:
+console.log( prefs.key(2) );
+// undefined &lt;-- WTF! I know there are 2 items in there, what gives?
+// Awww, shucks, it behaves just like an array, it is zero-based.
+// So the available n values are 0 and 1. 
+// Let&#39;s try that again, this time, with feeling:
+console.log( prefs.key(1) );
+// &quot;isActive&quot; &lt;-- There we have it.
+
+// Just in case you were wondering, this #key(n) method is very handy.
+// It&#39;s for those times when you absolutely must-
+
+// You caught me in a lie there, better stop while you still trust me. 
+// Honestly, I don&#39;t really know what it is good for.
+
+
+// Great, having recovered from that near disaster,
+// I can confidently say that this little walk, tote in hand, 
+// can&#39;t possibly get any worse. 
+// We should finish off with a bang!
+
+// Do you remember our old friend at the beginning? #clear()
+// No, not Clare, clear(). Here let me show you:
+prefs.clear();
+// OMGWTFBBQ! Uhm, I did not mean to actually do that!
+// Let&#39;s take a peak, see what we have in our tote now:
+console.log( prefs.all() );
+// [] &lt;-- Blue Blistering Barnacles! We are ruined, finished, kaput!
+
+// It&#39;s okay, it&#39;s okay. Don&#39;t Panic! 
+// We just need to ask the right questions...
+// Something like, &quot;What is the answer?&quot;
+console.log( prefs.length() );
+// 0 &lt;-- Phew! Now, that&#39;s a relief. Psst. Between you an me...
+// I was half expecting it to be 42. So you can imagine my joy, yes?
+// No? Well it&#39;s unfortunate that I nuked everything in the tote.
+// I was just trying to remind you of clear().
+// Let&#39;s call it a day then. 
+// If anyone asks, just say we sold all our Girl Guides Cookies, K?
+// Good.</code></pre>
+<p>That&#39;s it! The full API, which is just 7 methods is described in the example above.
+You may see the <a href="#api">API documentation</a> below for a clean list and additional details.</p>
+<h2><a name="api"></a>API</h2>
+<h4>set(key, value)</h4>
+<p>Aliases: setItem</p>
+<p>Store <code>value</code> identified by <code>key</code></p>
+<h4>get(key)</h4>
+<p>Aliases: getItem</p>
+<p>Retrieve <code>value</code> stored with <code>key</code></p>
+<h4>remove(key)</h4>
+<p>Aliases: removeItem(key)</p>
+<p>Delete the <code>value</code> stored with <code>key</code></p>
+<h4>all()</h4>
+<p>Retrieve an array of all the 
+- all({compact:true})
+- all({kvp:true})</p>
+<h4>clear()</h4>
+<p>Delete <em>all</em> the values stored in this namespace.</p>
+<h4>length()</h4>
+<p>Get the number of items stored in this namespace.</p>
+<h4>key(n)</h4>
+<p>Get the key stored at position &#39;n&#39;.</p>
+</article></div></main><footer><div class="row centered"><div class="col-12"> <small>Copyright &copy; 2014 Rudy Lattae | MIT License</small></div></div></footer><script type="text/javascript" src="lib/prism.js"></script></body></html>

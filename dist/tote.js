@@ -113,6 +113,7 @@
             },
 
             all: function all() {
+                if (!keys.length) refresh();
                 return keys;
             },
 
