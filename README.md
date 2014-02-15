@@ -12,9 +12,28 @@ interfere with any others.
 For more detailed examples, and the ability to try it out in your browser console, go to **http://rudylattae.github.io/tote/**
 
 
-## Usage
+## Setup
 
-### Basic example to get you started
+Download the latest release: <a href="dist/tote.js">Full</a>
+/ <a href="dist/tote.min.js">Minified</a>
+
+OR install it:
+
+<small class="muted">coming soon.</small>
+
+
+Include it in your webpage:
+
+```markup
+<script src="lib/tote.js" type="text/javascript"></script>
+```
+
+OR if you are an an environment with module a loader...
+
+<small class="muted">AMD / CJS support coming soon.</small>
+
+
+## Usage
 
 #### Create a namespaced instance
 
