@@ -14,8 +14,9 @@ For more detailed examples, and the ability to try it out in your browser consol
 
 ## Setup
 
-Download the latest release: <a href="www/dist/tote.js">Full</a>
-/ <a href="www/dist/tote.min.js">Minified</a>
+Download the latest release from the website, or get the *bleeding edge* right from GitHub:
+<a href="/www/dist/tote.js">Full</a>
+/ <a href="/www/dist/tote.min.js">Minified</a>
 
 OR install it:
 
