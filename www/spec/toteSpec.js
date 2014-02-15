@@ -119,29 +119,6 @@ describe('tote', function() {
             expect( all[1] ).toEqual( item2 );
         });
 
-        it('#clear, removes only values associated with self', function() {
-            var lsOther = tote('another'),
-                key1 = 'one',
-                key2 = 'two',
-                value1 = 'First value',
-                value2 = 'Second value';
-            ls.set(key1, value1);
-            ls.set(key2, value2);
-            lsOther.set(key1, value1);
-            lsOther.set(key2, value2);
-
-            ls.clear();
-            
-            expect( ls.get(key1) ).toBeNull();
-            expect( ls.get(key2) ).toBeNull();
-            
-            expect( lsOther.get(key1) ).toEqual( value1 );
-            expect( lsOther.get(key2) ).toEqual( value2 );
-
-            // cleanup
-            lsOther.clear();
-        });
-
         it('#length, returns the number of items stored', function() {
             var key1 = 'item1',
                 key2 = 'item2',
@@ -264,5 +241,118 @@ describe('tote', function() {
             expect( ls.get(key) ).toEqual( value );
         });
 
+    });
+
+    
+    describe('multiple instances with different namespaces', function() {
+        var ls1,
+            ls2;
+
+        beforeEach(function() {
+            ls1 = tote('area51');
+            ls2 = tote('districtB13');
+        });
+
+        afterEach(function() {
+            ls1.clear();
+            ls2.clear();
+        });
+
+
+        it('#clear, removes only values associated with self', function() {
+            var key1 = 'one',
+                key2 = 'two',
+                value1 = 'First value',
+                value2 = 'Second value';
+            ls1.set(key1, value1);
+            ls1.set(key2, value2);
+            ls2.set(key1, value1);
+            ls2.set(key2, value2);
+
+            ls1.clear();
+            
+            expect( ls1.get(key1) ).toBeNull();
+            expect( ls1.get(key2) ).toBeNull();
+            
+            expect( ls2.get(key1) ).toEqual( value1 );
+            expect( ls2.get(key2) ).toEqual( value2 );
+        });
+    });
+
+    
+    describe('multiple instances with the same namespaces', function() {
+        var ls1,
+            ls2;
+
+        beforeEach(function() {
+            ls1 = tote('mySpace');
+            ls2 = tote('mySpace');
+        });
+
+        afterEach(function() {
+            ls1.clear();
+            ls2.clear();
+        });
+
+
+        it('#set, values persisted in one will be available in the other', function() {
+            var key1 = 'one',
+                key2 = 'two',
+                value1 = 'First value',
+                value2 = 'Second value';
+
+            ls1.set(key1, value1);
+            ls1.set(key2, value2);
+            
+            expect( ls2.get(key1) ).toEqual( value1 );
+            expect( ls2.get(key2) ).toEqual( value2 );
+        });
+
+        it('#remove, values removed in one will be removed in the other', function() {
+            var key1 = 'one',
+                key2 = 'two',
+                value1 = 'First value',
+                value2 = 'Second value';
+            ls1.set(key1, value1);
+            ls1.set(key2, value2);
+            
+
+            ls1.remove(key2);
+
+            expect( ls2.get(key1) ).toEqual( value1 );
+            expect( ls2.get(key2) ).toBeNull();
+        });
+
+        it('#clear, removes values associated with the current namespace', function() {
+            var key1 = 'one',
+                key2 = 'two',
+                value1 = 'First value',
+                value2 = 'Second value';
+            ls1.set(key1, value1);
+            ls1.set(key2, value2);
+            ls2.set(key1, value1);
+            ls2.set(key2, value2);
+
+            ls1.clear();
+            
+            expect( ls1.get(key1) ).toBeNull();
+            expect( ls1.get(key2) ).toBeNull();
+            
+            expect( ls2.get(key1) ).toBeNull();
+            expect( ls2.get(key2) ).toBeNull();
+        });
+
+        it('#all, values persisted in one will be available in the other', function() {
+            var key1 = 'one',
+                key2 = 'two',
+                value1 = 'First value',
+                value2 = 'Second value';
+
+            ls1.set(key1, value1);
+            ls1.set(key2, value2);
+            
+            expect( ls2.all()[0] ).toEqual( value1 );
+            expect( ls2.all()[1] ).toEqual( value2 );
+        });
     });
 });
