@@ -111,5 +111,5 @@ gulp.task('release', ['check-compatibility', 'publish-dist', 'publish-spec', 'bu
 
 
 // defaul task
-gulp.task('default', ['package', 'check-features', 'build-website']);
+gulp.task('default', ['package', 'check-features']);
 
