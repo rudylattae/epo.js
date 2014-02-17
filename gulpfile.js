@@ -81,11 +81,6 @@ gulp.task('build-website', function(cb) {
 });
 
 
-gulp.task('develop', ['package', 'check-features'], function() {
-    gulp.watch(paths.allJs, ['package', 'check-features']);
-});
-
-
 gulp.task('bump', function() {
     return gulp.src(paths.pkg)
         .pipe(bump())
@@ -104,11 +99,17 @@ gulp.task('tag', function () {
 });
 
 
+// development 
+gulp.task('develop', ['package', 'check-features'], function() {
+    gulp.watch(paths.allJs, ['package', 'check-features']);
+});
+
+
 // should only be run on master branch
 gulp.task('prepare', ['package', 'check-compatibility', 'bump', 'tag']);
 gulp.task('release', ['check-compatibility', 'publish-dist', 'publish-spec', 'build-website']);
 
 
 // defaul task
-gulp.task('default', ['package', 'check-features', 'build-website']);
+gulp.task('default', ['package', 'check-features']);
 

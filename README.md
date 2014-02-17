@@ -9,7 +9,8 @@ Use localStorage as though it is a bunch of small containers for specific areas 
 Each "namespaced" instance of tote writes to the same underlying data store, but does not 
 interfere with any others.
 
-For more detailed examples, and the ability to try it out in your browser console, go to **http://rudylattae.github.io/tote/**
+For more detailed examples, and the ability to try it out in your browser console, 
+go to the project website at **http://rudylattae.github.io/tote/**
 
 
 ## Setup
@@ -100,3 +101,72 @@ prefs.all()
 - clear()
 - length()
 - key(n)
+
+
+## Developing / Contributing
+
+Here are some quick pointers to get you started hacking on tote. I welcome bugfixes and other helpful
+contributions.
+
+### Prerequisites
+
+- [Node.js][nodejs]. This is a library destined for the browser, but all the tools I use for, building and minifying,
+documenting and creating the website are all node based. 
+- [PhantomJS][phantomjs]. A headless browser in which the project specs are run straight int the command line.
+- [Testem][testem]. Runs the specs live in multiple browsers as you develop.
+It also runs the specs in "ci" mode (one-off, multiple browsers) and reports on the results.
+
+Before you can begin hacking on the project, you will need to make sure you have [Node.js][nodejs] installed.
+Technically, I could include `Testem` as a development dependency in the [`package.json`][package.json], 
+but due to it's size, I currently install Testem to my global node_modules space. 
+
+To install testem globally in your nodejs environment run:
+
+```console
+npm install -g testem
+```
+
+Now, you are ready to hack on tote.
+
+### Core tools
+
+One more thing befor you get going. Here are the tools that are used to write specs,
+build the package and the peoject website.
+
+- [Jasmine][jasmine]. Used to create and execute tote's specs
+- [Gulp][gulpjs]. The build automation tool. Reduces most of the complex build workflows
+to simple tasks that you run from the command line.
+- [Harp][harpjs]. A deceptively simple static webserver which builds the project website.
+
+### Setup
+
+To setup the project for development on your machine:
+
+1. Clone this repo or fork then clone it into a local directory (the project directory).
+2. In order to work on the website, you will 
+2. Go to the project directory and run `npm install`
+-- This should install all the development dependencies
+
+Great now you are all setup.
+
+### Crank the engine
+
+You are ready to hack up a storm. First do a quick check to confirm that everything is in order.
+Go to the project directory and run:
+
+```console
+gulp
+```
+
+This runs the default task in the [gulpfile][gulpfile.js] which creates the package, runs the 
+specs in phantomjs.
+
+
+[nodejs]: http://nodejs.org/
+[phantomjs]: http://phantomjs.org/
+[testem]: https://github.com/airportyh/testem
+[jasmine]: http://jasmine.github.io/2.0/introduction.html
+[gulpjs]: http://gulpjs.com/
+[harpjs]: http://harpjs.com/
+[package.json]: /package.json
+[gulpfile.js]: /gulpfile.js
