@@ -100,3 +100,22 @@ prefs.all()
 - clear()
 - length()
 - key(n)
+
+
+## Deveopment / Contributing
+
+Here are some quick pointers to get you started hacking on tote. I welcome bugfixes and other helpful
+contributions.
+
+### Setup
+
+- Clone this repo or fork then clone it.
+- Go to the directory you cloned to and run `npm install`
+-- This should install all the development dependencies
+- There is one dependency that **will not** be installed in the previous step. 
+- [Testem](https://github.com/airportyh/testem) is the tool used for running tote's 
+[Jasmine](http://jasmine.github.io/2.0/introduction.html) specs
+- Due to it's size, I currently install Testem to my global node_modules space.
+-- npm install -g testem
+
+Great now you are all setup.

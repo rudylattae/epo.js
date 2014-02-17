@@ -81,11 +81,6 @@ gulp.task('build-website', function(cb) {
 });
 
 
-gulp.task('develop', ['package', 'check-features'], function() {
-    gulp.watch(paths.allJs, ['package', 'check-features']);
-});
-
-
 gulp.task('bump', function() {
     return gulp.src(paths.pkg)
         .pipe(bump())
@@ -101,6 +96,12 @@ gulp.task('tag', function () {
         .pipe(git.tag(version, message))
         .pipe(git.push('origin', 'master', '--tags'))
         .pipe(gulp.dest('./'));
+});
+
+
+// development 
+gulp.task('develop', ['package', 'check-features'], function() {
+    gulp.watch(paths.allJs, ['package', 'check-features']);
 });
 
 

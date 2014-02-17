@@ -244,7 +244,7 @@ describe('tote', function() {
     });
 
     
-    describe('multiple instances with different namespaces', function() {
+    describe('multiple instances with different namespace', function() {
         var ls1,
             ls2;
 
