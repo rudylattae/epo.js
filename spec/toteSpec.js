@@ -92,7 +92,7 @@ describe('tote', function() {
             var all = ls.all();
             
             expect( all[0] ).toEqual( value1 );
-            expect( all[1] ).toEqual( value1 );
+            expect( all[1] ).toEqual( value2 );
         });
 
         it('#all({compact:true}), returns an array of a compact representation of all items', function() {
