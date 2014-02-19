@@ -108,6 +108,13 @@ prefs.all()
 Here are some quick pointers to get you started hacking on tote. I welcome bugfixes and other helpful
 contributions.
 
+### Versioning style
+
+tote is versioned based on the Semantic Versioning system. When contributing
+bug fixes or new features, it helps to be mindful of how it would impact the public API and what 
+that means in terms of the resulting version number. Please read http://semver.org/ if you are not
+already familiar with it.
+
 ### Prerequisites
 
 - [Node.js][nodejs]. This is a library destined for the browser, but all the tools I use for, building and minifying,
