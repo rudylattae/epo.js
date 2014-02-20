@@ -1,13 +1,13 @@
 !!!
 html
   head
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(name="keywords", content=keywords)
-    meta(name="description", content=description)
-    title=title
-    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Maven+Pro")
-    link(rel="stylesheet", href="theme/default.css" media="screen")
-    script(type="text/javascript", src="dist/tote.js")
+    meta( name="viewport", content="width=device-width, initial-scale=1.0" )
+    meta( name="keywords", content=keywords )
+    meta( name="description", content=description )
+    title = title
+    link( rel="stylesheet", href="http://fonts.googleapis.com/css?family=Maven+Pro" )
+    link( rel="stylesheet", href="theme/default.css" media="screen" )
+    script( type="text/javascript", src="dist/tote.js" )
   body
 
     header
@@ -16,13 +16,13 @@ html
         nav.main.col-9
           ul
             li
-              a(href="./#about") About
+              a( href="./#about" ) About
             li
-              a(href="./#quickstart") Quickstart
+              a( href="./#quickstart" ) Quickstart
             li
-              a(href="./#api") API
+              a( href="./#api" ) API
             li
-              a(href="https://github.com/rudylattae/tote") GitHub
+              a( href="https://github.com/rudylattae/tote" ) GitHub
             li
               <iframe src="http://ghbtns.com/github-btn.html?user=rudylattae&repo=tote&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20"></iframe>
 
@@ -42,11 +42,11 @@ html
             ```javascript
             var about = tote('about-tote');
 
-            about.set('tags', ['simple', 'tiny']);
+            about.set( 'tags', ['simple', 'tiny'] );
             console.log( about.get('tags') );
             // ['simple', 'tiny']
 
-            about.set('isActive', true);
+            about.set( 'isActive', true );
             console.log( about.get('isActive') );
             // true
 
@@ -70,13 +70,13 @@ html
             dd Browser
             dt Resources
             dd
-              a(href="./spec/", title="Run the tote specs in your browser") Specs
+              a( href="./spec/", title="Run the tote specs in your browser" ) Specs
               , 
-              a(href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com") jsPerf
+              a( href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com" ) jsPerf
               , 
-              a(href="https://github.com/rudylattae/tote", title="Source repo and issue tracker") GitHub
+              a( href="https://github.com/rudylattae/tote", title="Source repo and issue tracker" ) GitHub
               , 
-              a(href="https://huboard.com/rudylattae/tote", title="Project Roadmap and Kanban board") Huboard
+              a( href="https://huboard.com/rudylattae/tote", title="Project Roadmap and Kanban board" ) Huboard
 
           a(href="dist/tote.js" class="btn btn-primary") Development (4.2k)
           a(href="dist/tote.min.js" class="btn") Minified (1.4k)
@@ -97,4 +97,4 @@ html
           small Copyright &copy; 2014 Rudy Lattae | MIT License
 
 
-    script(type="text/javascript", src="lib/prism.js")
+    script( type="text/javascript", src="lib/prism.js" )

@@ -2,8 +2,8 @@
 
 > A thin namespaced localStorage API.
 
-**IMPORTANT** tote is not yet stable so you should not use it in production. If you like what you see so far,
-star it on GitHub so I know you want to use it.
+**IMPORTANT** tote is not yet stable so you should not use it in production. If you like what you
+see so far, star it on GitHub so I know you want to use it.
 
 Use localStorage as though it is a bunch of small containers for specific areas of your app.
 Each "namespaced" instance of tote writes to the same underlying data store, but does not 
@@ -105,8 +105,8 @@ prefs.all()
 
 ## Developing / Contributing
 
-Here are some quick pointers to get you started hacking on tote. I welcome bugfixes and other helpful
-contributions.
+Here are some quick pointers to get you started hacking on tote. I welcome bugfixes and other
+helpful contributions.
 
 ### Versioning style
 
@@ -117,15 +117,17 @@ already familiar with it.
 
 ### Prerequisites
 
-- [Node.js][nodejs]. This is a library destined for the browser, but all the tools I use for, building and minifying,
-documenting and creating the website are all node based. 
-- [PhantomJS][phantomjs]. A headless browser in which the project specs are run straight int the command line.
+- [Node.js][nodejs]. This is a library destined for the browser, but all the tools I use for,
+building and minifying, documenting and creating the website are all node based. 
+- [PhantomJS][phantomjs]. A headless browser in which the project specs are run straight int the
+command line.
 - [Testem][testem]. Runs the specs live in multiple browsers as you develop.
 It also runs the specs in "ci" mode (one-off, multiple browsers) and reports on the results.
 
-Before you can begin hacking on the project, you will need to make sure you have [Node.js][nodejs] installed.
-Technically, I could include `Testem` as a development dependency in the [`package.json`][package.json], 
-but due to it's size, I currently install Testem to my global node_modules space. 
+Before you can begin hacking on the project, you will need to make sure you have [Node.js][nodejs]
+installed. Technically, I could include `Testem` as a development dependency in the
+[`package.json`][package.json], but due to it's size, I currently install Testem to my global
+node_modules space. 
 
 To install testem globally in your nodejs environment run:
 
@@ -167,6 +169,24 @@ gulp
 
 This runs the default task in the [gulpfile][gulpfile.js] which creates the package, runs the 
 specs in phantomjs.
+
+### Coding style
+
+I am trying to keep with the essence of https://github.com/rwaldron/idiomatic.js/ .
+Please check it out sometime. In general:
+
+- 2 `  ` spaces for indentation (no tabs)
+- Use semicolons;
+- Commas last,
+- Prefer `'` to `"`
+- `'use strict';`
+- 100 character line length -- let's break some rules!
+
+And one important point:
+
+**Code contributions should come with relevant tests where appropriate.**
+
+Cheers!
 
 
 [nodejs]: http://nodejs.org/
