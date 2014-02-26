@@ -126,12 +126,12 @@ building and minifying, documenting and creating the website are all node based.
 command line.
 - [Testem][testem]. Runs the specs live in multiple browsers as you develop.
 It also runs the specs in "ci" mode (one-off, multiple browsers) and reports on the results.
--- To install as a node module, run: `npm install -g testem`
+ - To install as a node module, run: `npm install -g testem`
 - [Gulp][gulpjs]. The build automation tool. Reduces most of the complex build workflows
 to simple tasks that you run from the command line.
--- To install as a node module, run: `npm install -g gulp`
+ - To install as a node module, run: `npm install -g gulp`
 - [Harp][harpjs]. A deceptively simple static webserver which builds the project website.
--- To install as a node module, run: `npm install -g harp`
+ - To install as a node module, run: `npm install -g harp`
 
 Note that technically, I could include `Testem` as a development dependency in the
 [`package.json`][package.json], but I think it is better as a global install (for now. I currently
@@ -144,7 +144,7 @@ Now, you are ready to hack up a storm.
 Then clone this repo, better yet, fork then clone it into a local directory (the project directory).
 
 1. Go to the project directory and run `npm install`
--- This should install all the development dependencies
+ - This should install all the development dependencies
 2. To confirm that everything is in order, in the project directory, run `gulp`
 
 This runs the default task in the [gulpfile][gulpfile.js] which creates the package, runs the 
