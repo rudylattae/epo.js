@@ -117,58 +117,65 @@ already familiar with it.
 
 ### Prerequisites
 
+To setup the project for development on your machine, make sure you have all the prerequisites
+listed below installed and setup.
+
 - [Node.js][nodejs]. This is a library destined for the browser, but all the tools I use for,
 building and minifying, documenting and creating the website are all node based. 
 - [PhantomJS][phantomjs]. A headless browser in which the project specs are run straight int the
 command line.
 - [Testem][testem]. Runs the specs live in multiple browsers as you develop.
 It also runs the specs in "ci" mode (one-off, multiple browsers) and reports on the results.
+- [Gulp][gulpjs]. The build automation tool. Reduces most of the complex build workflows
+to simple tasks that you run from the command line.
+- [Harp][harpjs]. A deceptively simple static webserver which builds the project website.
 
-Before you can begin hacking on the project, you will need to make sure you have [Node.js][nodejs]
-installed. Technically, I could include `Testem` as a development dependency in the
-[`package.json`][package.json], but due to it's size, I currently install Testem to my global
-node_modules space. 
+Before you can begin hacking on the project, you will need to make sure you have the above
+prerequisites installed and setup on your development machine. Technically, I could include
+`Testem` as a development dependency in the [`package.json`][package.json], but I think it is
+better as a global install (for now. I currently install Testem to my global node_modules space. 
 
-To install testem globally in your nodejs environment run:
+
+1. Download and install node + npm
+
+2. Install testem globally in your nodejs environment run:
 
 ```console
 npm install -g testem
 ```
 
-Now, you are ready to hack on tote.
+3. Install gulp
 
-### Core tools
+```console
+npm install -g gulp
+```
 
-One more thing befor you get going. Here are the tools that are used to write specs,
-build the package and the peoject website.
+4. Install harp
 
-- [Jasmine][jasmine]. Used to create and execute tote's specs
-- [Gulp][gulpjs]. The build automation tool. Reduces most of the complex build workflows
-to simple tasks that you run from the command line.
-- [Harp][harpjs]. A deceptively simple static webserver which builds the project website.
+```console
+npm install -g harp
+```
 
-### Setup
-
-To setup the project for development on your machine:
-
-1. Clone this repo or fork then clone it into a local directory (the project directory).
-2. In order to work on the website, you will 
-2. Go to the project directory and run `npm install`
--- This should install all the development dependencies
-
-Great now you are all setup.
+Now, you are ready to hack up a storm.
 
 ### Crank the engine
 
-You are ready to hack up a storm. First do a quick check to confirm that everything is in order.
-Go to the project directory and run:
+Then clone this repo, better yet, fork then clone it into a local directory (the project directory).
 
-```console
-gulp
-```
+1. Go to the project directory and run `npm install`
+-- This should install all the development dependencies
+2. To confirm that everything is in order, in the project directory, run `gulp`
 
 This runs the default task in the [gulpfile][gulpfile.js] which creates the package, runs the 
 specs in phantomjs.
+
+If all goes well, you are setup.
+
+### Specifications (tests) libraries
+
+One more thing:
+
+- [Jasmine][jasmine]. Used to create and execute tote's specs
 
 ### Coding style
 
