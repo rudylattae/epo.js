@@ -126,35 +126,16 @@ building and minifying, documenting and creating the website are all node based.
 command line.
 - [Testem][testem]. Runs the specs live in multiple browsers as you develop.
 It also runs the specs in "ci" mode (one-off, multiple browsers) and reports on the results.
+-- To install as a node module, run: `npm install -g testem`
 - [Gulp][gulpjs]. The build automation tool. Reduces most of the complex build workflows
 to simple tasks that you run from the command line.
+-- To install as a node module, run: `npm install -g gulp`
 - [Harp][harpjs]. A deceptively simple static webserver which builds the project website.
+-- To install as a node module, run: `npm install -g harp`
 
-Before you can begin hacking on the project, you will need to make sure you have the above
-prerequisites installed and setup on your development machine. Technically, I could include
-`Testem` as a development dependency in the [`package.json`][package.json], but I think it is
-better as a global install (for now. I currently install Testem to my global node_modules space. 
-
-
-1. Download and install node + npm
-
-2. Install testem globally in your nodejs environment run:
-
-```console
-npm install -g testem
-```
-
-3. Install gulp
-
-```console
-npm install -g gulp
-```
-
-4. Install harp
-
-```console
-npm install -g harp
-```
+Note that technically, I could include `Testem` as a development dependency in the
+[`package.json`][package.json], but I think it is better as a global install (for now. I currently
+install Testem to my global node_modules space. 
 
 Now, you are ready to hack up a storm.
 
