@@ -141,8 +141,7 @@ Now, you are ready to hack up a storm.
 
 ### Crank the engine
 
-Then clone this repo, better yet, fork then clone it into a local directory (the project directory).
-
+1. Clone this repo, better yet, fork, then clone it into a local directory (the project directory).
 1. Go to the project directory and run `npm install`
  - This should install all the development dependencies
 2. To confirm that everything is in order, in the project directory, run `gulp`
@@ -150,7 +149,7 @@ Then clone this repo, better yet, fork then clone it into a local directory (the
 This runs the default task in the [gulpfile][gulpfile.js] which creates the package, runs the 
 specs in phantomjs.
 
-If all goes well, you are setup.
+If all goes well and there are no errors, then all is well, you may start coding.
 
 ### Specifications (tests) libraries
 
