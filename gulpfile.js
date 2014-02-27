@@ -92,9 +92,13 @@ gulp.task('develop', ['package', 'check-features'], function() {
 
 
 // should only be run on master branch
-gulp.task('prepare', ['package', 'check-compatibility', 'bump', 'tag']);
-gulp.task('release', ['check-compatibility', 'publish-dist', 'publish-spec', 'build-website']);
+gulp.task('prepare', function(done) {
+  runSequence('package', 'check-compatibility', 'bump', 'tag', done);
+});
 
+gulp.task('release', function(done) {
+  runSequence('check-compatibility', ['publish-dist', 'publish-spec'], 'build-website', done);
+});
 
 // defaul task
 gulp.task('default', function(done) {
