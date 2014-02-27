@@ -15,7 +15,7 @@
   "expr": true,
   "latedef": "nofunc",
   "quotmark": "single",
-  "indent": 4,
+  "indent": 2,
   "node": true,
   "globals": {
     "window": true,
