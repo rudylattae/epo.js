@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-  exec = require('exec'),
+  exec = require('gulp-exec'),
   jshint = require('gulp-jshint'),
   bump = require('gulp-bump'),
   git = require('gulp-git'),
@@ -40,45 +40,30 @@ gulp.task('package', ['lint'], function() {
 });
 
 
-gulp.task('check-features', function(cb) {
-  exec(['testem', 'ci', '-l', 'PhantomJS'], function(err, out) {
-    process.stdout.write( out );
-    if (err) throw err;
-    cb();
-  });
+gulp.task('check-features', function() {
+  return gulp.src('.')
+    .pipe(exec('testem ci -l PhantomJS'));
 });
 
-gulp.task('check-compatibility', function(cb) {
-  exec(['testem', 'ci', '--parallel', '5'], function(err, out) {
-    process.stdout.write( out );
-    if (err) throw err;
-    cb();
-  });
+gulp.task('check-compatibility', function() {
+  return gulp.src('.')
+    .pipe(exec('testem ci --parallel 5'));
 });
 
 
-gulp.task('publish-dist', function(cb) {
-  exec(['cp', '-r', paths.dist, './www'], function(err, out) {
-    process.stdout.write( out );
-    if (err) throw err;
-    cb();
-  });
+gulp.task('publish-dist', function() {
+  return gulp.src('.')
+    .pipe(exec('cp -r ' + paths.dist + ' ./www'));
 });
 
-gulp.task('publish-spec', function(cb) {
-  exec(['cp', '-r', paths.spec, './www'], function(err, out) {
-    process.stdout.write( out );
-    if (err) throw err;
-    cb();
-  });
+gulp.task('publish-spec', function() {
+  return gulp.src('.')
+    .pipe(exec('cp -r ' + paths.spec + ' ./www'));
 });
 
-gulp.task('build-website', function(cb) {
-  exec(['harp', 'compile', 'www', '_www'], function(err, out) {
-    process.stdout.write( out );
-    if (err) throw err;
-    cb();
-  });
+gulp.task('build-website', function() {
+  return gulp.src('.')
+    .pipe(exec('harp compile ./www ./_www'));
 });
 
 
