@@ -1,4 +1,5 @@
-## <a name="about"></a>About
+<a name="about"></a>
+## About
 
 tote is a tiny JavaScript library that turns localStorage into isolated containers. 
 Use multiple totes in the same app, with minimal overhead and no fear of key collisions.
@@ -10,7 +11,8 @@ Use multiple totes in the same app, with minimal overhead and no fear of key col
 - Simple API, about seven (7) methods with some compatibility aliases to boot.
 
 
-## <a name="quickstart"></a>Quickstart
+<a name="quickstart"></a>
+## Quickstart
 
 <p class="note note-info">
 This site includes a copy of the latest version of tote. So you may try out any of the 
@@ -54,57 +56,41 @@ for an awesome application.
 // Create a namespaced instance
 var prefs = tote('settings');
 
-// For the purposes of this example, let's clean house
+// For the purposes of this example,
+// delete all the values stored in this namespace
 prefs.clear();
-// deletes all the values stored in this namespace
 
 // Confirm that we have nothing
 console.log( prefs.length() );
-// 0 <-- See, I told you!
+// 0
 
-// Okay, now we store a number (I don't know what its for)
+// Store a number
 prefs.set('count', 500);
 
 // Retrieve what we stored, as the original data type
 console.log( prefs.get('count') );
-// 500 <-- Kyaa! it is an Integer!
+// 500 <-- Note that it is an Integer.
 
-// Store some more numbers
+// Store some more numbers (floats and negatives)
 prefs.set('cost', 35.99);
 prefs.set('temperature', -25);
 
-// Take a look at what we have so far
-console.log( prefs.get('cost') );
-// 35.99
-console.log( prefs.get('temperature') );
-// -25
-
-// At this point, the number of items in our tote has gone up a bit
-console.log( prefs.length() );
-// 3 <-- It's a decent number, could go much higher
-
-
-// Okay, it's time to jazz it up a bit with a Boolean and a String
+// Throw in a Boolean and a String
 prefs.set('isActive', true);
 prefs.set('fullName', 'Blazing Hoofs');
 
-// Now, say we want to see EVERYTHING in our tote
+// Look at EVERYTHING in our tote and check the size
 console.log( prefs.all() );
 // [500, 35.99, -25, true, "Blazing Hoofs"] 
 console.log( prefs.length() );
-// 5 <-- Good going, we are stuffing out tote full of goodies!
+// 5
 
-
-// So far we had some fun putting stuff in our tote,
-// but it's getting heavy so we want to take some items out. 
-// How?
-// It's simple. Say you are tired of the `count`. 
-// Just reach in an toss it.
+// Remove an item from the tote and verify it's gone
 prefs.remove('count');
 console.log( prefs.get('count') );
-// null <-- Gasp! We really chucked it eh?
+// null
 
-// Now let's just go crazy and get rid of some more stuff.
+// Get rid of some more stuff.
 prefs.remove('temperature');
 prefs.remove('fullName');
 
@@ -112,57 +98,30 @@ prefs.remove('fullName');
 console.log( prefs.all() );
 // [35.99, true]
 console.log( prefs.length() );
-// 2 <-- Nice, the tote is not too heavy and not too light, just right.
+// 2
 
 
-// Oh, I almost forgot. Here's another neat thing you can do.
-// You can figure out the key for the value at position 'n'. Like this:
-console.log( prefs.key(2) );
-// undefined <-- WTF! I know there are 2 items in there, what gives?
-// Awww, shucks, it behaves just like an array, it is zero-based.
-// So the available n values are 0 and 1. 
-// Let's try that again, this time, with feeling:
+// You can figure out the key for the value 
+// at position 'n'. Like this:
 console.log( prefs.key(1) );
-// "isActive" <-- There we have it.
+// "isActive" 
 
-// Just in case you were wondering, this #key(n) method is very handy.
-// It's for those times when you absolutely must-
-
-// You caught me in a lie there, better stop while you still trust me. 
-// Honestly, I don't really know what it is good for.
-
-
-// Great, having recovered from that near disaster,
-// I can confidently say that this little walk, tote in hand, 
-// can't possibly get any worse. 
-// We should finish off with a bang!
-
-// Do you remember our old friend at the beginning? #clear()
-// No, not Clare, clear(). Here let me show you:
+// If you want to nuke everything in this tote...
 prefs.clear();
-// OMGWTFBBQ! Uhm, I did not mean to actually do that!
-// Let's take a peak, see what we have in our tote now:
 console.log( prefs.all() );
-// [] <-- Blue Blistering Barnacles! We are ruined, finished, kaput!
-
-// It's okay, it's okay. Don't Panic! 
-// We just need to ask the right questions...
-// Something like, "What is the answer?"
+// []
 console.log( prefs.length() );
-// 0 <-- Phew! Now, that's a relief. Psst. Between you an me...
-// I was half expecting it to be 42. So you can imagine my joy, yes?
-// No? Well it's unfortunate that I nuked everything in the tote.
-// I was just trying to remind you of clear().
-// Let's call it a day then. 
-// If anyone asks, just say we sold all our Girl Guides Cookies, K?
-// Good.
+// 0 
+// Note that `clear()` only affects the namespace of the tote it is called on. 
+// Everything else in localStorage is untouched
 ```
 
 That's it! The full API, which is just 7 methods is described in the example above.
 You may see the [API documentation](#api) below for a clean list and additional details.
 
 
-## <a name="api"></a>API
+<a name="api"></a>
+## API
 
 #### set(key, value)
 

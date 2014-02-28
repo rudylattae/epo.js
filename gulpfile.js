@@ -10,6 +10,7 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   size = require('gulp-size'),
   runSequence = require('run-sequence'),
+  help = require('gulp-task-listing'),
   pkg = require('./package.json');
 
 
@@ -83,6 +84,9 @@ gulp.task('tag', function () {
     .pipe(git.push('origin', 'master', '--tags'))
     .pipe(gulp.dest('./'));
 });
+
+// show task list
+gulp.task('help', help);
 
 
 // development 
