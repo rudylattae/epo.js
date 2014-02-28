@@ -12,7 +12,8 @@ console.log( about.get(&#39;isActive&#39;) );
 about.remove(&#39;isActive&#39;);
 console.log( about.get(&#39;isActive&#39;) );
 // null</code></pre>
-</section><section class="pulse col-6"><dl class="well muted"><dt>Status</dt><dd>Unstable Aplha</dd><dt>Version</dt><dd>v0.2.2-a | <date>Feb 15 2004</date></dd><dt>License</dt><dd>Open Source -- MIT</dd><dt>Install with</dt><dd>Bower, Component... soon</dd><dt>Environments</dt><dd>Browser</dd><dt>Resources</dt><dd><a href="./spec/" title="Run the tote specs in your browser">Specs</a>, <a href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com">jsPerf</a>, <a href="https://github.com/rudylattae/tote" title="Source repo and issue tracker">GitHub</a>, <a href="https://huboard.com/rudylattae/tote" title="Project Roadmap and Kanban board">Huboard</a></dd></dl><a href="dist/tote.js" class="btn btn-primary">Development (4.2k)</a><a href="dist/tote.min.js" class="btn">Minified (1.4k)</a></section></div><div class="row centered"><hr class="divider"></div></div><main><div class="row centered"><article class="col-12"><h2><a name="about"></a>About</h2>
+</section><section class="pulse col-6"><dl class="well muted"><dt>Status</dt><dd>Unstable Aplha</dd><dt>Version</dt><dd>v0.2.2-a | <date>Feb 15 2004</date></dd><dt>License</dt><dd>Open Source -- MIT</dd><dt>Install with</dt><dd>Bower, Component... soon</dd><dt>Environments</dt><dd>Browser</dd><dt>Resources</dt><dd><a href="./spec/" title="Run the tote specs in your browser">Specs</a>, <a href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com">jsPerf</a>, <a href="https://github.com/rudylattae/tote" title="Source repo and issue tracker">GitHub</a>, <a href="https://huboard.com/rudylattae/tote" title="Project Roadmap and Kanban board">Huboard</a></dd></dl><a href="dist/tote.js" class="btn btn-primary">Development (4.2k)</a><a href="dist/tote.min.js" class="btn">Minified (1.4k)</a></section></div><div class="row centered"><hr class="divider"></div></div><main><div class="row centered"><article class="col-12"><p><a name="about"></a></p>
+<h2>About</h2>
 <p>tote is a tiny JavaScript library that turns localStorage into isolated containers. 
 Use multiple totes in the same app, with minimal overhead and no fear of key collisions.</p>
 <h3>Features</h3>
@@ -21,7 +22,8 @@ Use multiple totes in the same app, with minimal overhead and no fear of key col
 <li>What you store is what you get -- Number, Boolean, Object, Array, String (of course)...</li>
 <li>Simple API, about seven (7) methods with some compatibility aliases to boot.</li>
 </ul>
-<h2><a name="quickstart"></a>Quickstart</h2>
+<p><a name="quickstart"></a></p>
+<h2>Quickstart</h2>
 <p class="note note-info">
 This site includes a copy of the latest version of tote. So you may try out any of the 
 examples on the site, right in your browser console. It&#39;s like a &quot;try before you buy&quot; feature
@@ -46,57 +48,41 @@ for an awesome application.</p>
 <pre><code class="language-javascript">// Create a namespaced instance
 var prefs = tote(&#39;settings&#39;);
 
-// For the purposes of this example, let&#39;s clean house
+// For the purposes of this example,
+// delete all the values stored in this namespace
 prefs.clear();
-// deletes all the values stored in this namespace
 
 // Confirm that we have nothing
 console.log( prefs.length() );
-// 0 &lt;-- See, I told you!
+// 0
 
-// Okay, now we store a number (I don&#39;t know what its for)
+// Store a number
 prefs.set(&#39;count&#39;, 500);
 
 // Retrieve what we stored, as the original data type
 console.log( prefs.get(&#39;count&#39;) );
-// 500 &lt;-- Kyaa! it is an Integer!
+// 500 &lt;-- Note that it is an Integer.
 
-// Store some more numbers
+// Store some more numbers (floats and negatives)
 prefs.set(&#39;cost&#39;, 35.99);
 prefs.set(&#39;temperature&#39;, -25);
 
-// Take a look at what we have so far
-console.log( prefs.get(&#39;cost&#39;) );
-// 35.99
-console.log( prefs.get(&#39;temperature&#39;) );
-// -25
-
-// At this point, the number of items in our tote has gone up a bit
-console.log( prefs.length() );
-// 3 &lt;-- It&#39;s a decent number, could go much higher
-
-
-// Okay, it&#39;s time to jazz it up a bit with a Boolean and a String
+// Throw in a Boolean and a String
 prefs.set(&#39;isActive&#39;, true);
 prefs.set(&#39;fullName&#39;, &#39;Blazing Hoofs&#39;);
 
-// Now, say we want to see EVERYTHING in our tote
+// Look at EVERYTHING in our tote and check the size
 console.log( prefs.all() );
 // [500, 35.99, -25, true, &quot;Blazing Hoofs&quot;] 
 console.log( prefs.length() );
-// 5 &lt;-- Good going, we are stuffing out tote full of goodies!
+// 5
 
-
-// So far we had some fun putting stuff in our tote,
-// but it&#39;s getting heavy so we want to take some items out. 
-// How?
-// It&#39;s simple. Say you are tired of the `count`. 
-// Just reach in an toss it.
+// Remove an item from the tote and verify it&#39;s gone
 prefs.remove(&#39;count&#39;);
 console.log( prefs.get(&#39;count&#39;) );
-// null &lt;-- Gasp! We really chucked it eh?
+// null
 
-// Now let&#39;s just go crazy and get rid of some more stuff.
+// Get rid of some more stuff.
 prefs.remove(&#39;temperature&#39;);
 prefs.remove(&#39;fullName&#39;);
 
@@ -104,53 +90,26 @@ prefs.remove(&#39;fullName&#39;);
 console.log( prefs.all() );
 // [35.99, true]
 console.log( prefs.length() );
-// 2 &lt;-- Nice, the tote is not too heavy and not too light, just right.
+// 2
 
 
-// Oh, I almost forgot. Here&#39;s another neat thing you can do.
-// You can figure out the key for the value at position &#39;n&#39;. Like this:
-console.log( prefs.key(2) );
-// undefined &lt;-- WTF! I know there are 2 items in there, what gives?
-// Awww, shucks, it behaves just like an array, it is zero-based.
-// So the available n values are 0 and 1. 
-// Let&#39;s try that again, this time, with feeling:
+// You can figure out the key for the value 
+// at position &#39;n&#39;. Like this:
 console.log( prefs.key(1) );
-// &quot;isActive&quot; &lt;-- There we have it.
+// &quot;isActive&quot; 
 
-// Just in case you were wondering, this #key(n) method is very handy.
-// It&#39;s for those times when you absolutely must-
-
-// You caught me in a lie there, better stop while you still trust me. 
-// Honestly, I don&#39;t really know what it is good for.
-
-
-// Great, having recovered from that near disaster,
-// I can confidently say that this little walk, tote in hand, 
-// can&#39;t possibly get any worse. 
-// We should finish off with a bang!
-
-// Do you remember our old friend at the beginning? #clear()
-// No, not Clare, clear(). Here let me show you:
+// If you want to nuke everything in this tote...
 prefs.clear();
-// OMGWTFBBQ! Uhm, I did not mean to actually do that!
-// Let&#39;s take a peak, see what we have in our tote now:
 console.log( prefs.all() );
-// [] &lt;-- Blue Blistering Barnacles! We are ruined, finished, kaput!
-
-// It&#39;s okay, it&#39;s okay. Don&#39;t Panic! 
-// We just need to ask the right questions...
-// Something like, &quot;What is the answer?&quot;
+// []
 console.log( prefs.length() );
-// 0 &lt;-- Phew! Now, that&#39;s a relief. Psst. Between you an me...
-// I was half expecting it to be 42. So you can imagine my joy, yes?
-// No? Well it&#39;s unfortunate that I nuked everything in the tote.
-// I was just trying to remind you of clear().
-// Let&#39;s call it a day then. 
-// If anyone asks, just say we sold all our Girl Guides Cookies, K?
-// Good.</code></pre>
+// 0 
+// Note that `clear()` only affects the namespace of the tote it is called on. 
+// Everything else in localStorage is untouched</code></pre>
 <p>That&#39;s it! The full API, which is just 7 methods is described in the example above.
 You may see the <a href="#api">API documentation</a> below for a clean list and additional details.</p>
-<h2><a name="api"></a>API</h2>
+<p><a name="api"></a></p>
+<h2>API</h2>
 <h4>set(key, value)</h4>
 <p>Aliases: setItem</p>
 <p>Store <code>value</code> identified by <code>key</code></p>
