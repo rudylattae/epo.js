@@ -12,7 +12,7 @@ console.log( about.get(&#39;isActive&#39;) );
 about.remove(&#39;isActive&#39;);
 console.log( about.get(&#39;isActive&#39;) );
 // null</code></pre>
-</section><section class="pulse col-6"><dl class="well muted"><dt>Status</dt><dd>Unstable Aplha</dd><dt>Version</dt><dd>v0.2.2-a | <date>Feb 15 2004</date></dd><dt>License</dt><dd>Open Source -- MIT</dd><dt>Install with</dt><dd>Bower, Component... soon</dd><dt>Environments</dt><dd>Browser</dd><dt>Resources</dt><dd><a href="./spec/" title="Run the tote specs in your browser">Specs</a>, <a href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com">jsPerf</a>, <a href="https://github.com/rudylattae/tote" title="Source repo and issue tracker">GitHub</a>, <a href="https://huboard.com/rudylattae/tote" title="Project Roadmap and Kanban board">Huboard</a></dd></dl><a href="dist/tote.js" class="btn btn-primary">Development (4.2k)</a><a href="dist/tote.min.js" class="btn">Minified (1.4k)</a></section></div><div class="row centered"><hr class="divider"></div></div><main><div class="row centered"><article class="col-12"><p><a name="about"></a></p>
+</section><section class="pulse col-6"><dl class="well muted"><dt>Status</dt><dd>Unstable Aplha</dd><dt>Version</dt><dd>v0.3.0-a | <date>Feb 15 2004</date></dd><dt>License</dt><dd>Open Source -- MIT</dd><dt>Install with</dt><dd>Bower, Component... soon</dd><dt>Environments</dt><dd>Browser</dd><dt>Resources</dt><dd><a href="./spec/" title="Run the tote specs in your browser">Specs</a>, <a href="http://jsperf.com/tote-vs-native-storage" title="tote vs native localStorage on jsperf.com">jsPerf</a>, <a href="https://github.com/rudylattae/tote" title="Source repo and issue tracker">GitHub</a>, <a href="https://huboard.com/rudylattae/tote" title="Project Roadmap and Kanban board">Huboard</a></dd></dl><a href="dist/tote.js" class="btn btn-primary">Development (4.2k)</a><a href="dist/tote.min.js" class="btn">Minified (1.4k)</a></section></div><div class="row centered"><hr class="divider"></div></div><main><div class="row centered"><article class="col-12"><p><a name="about"></a></p>
 <h2>About</h2>
 <p>tote is a tiny JavaScript library that turns localStorage into isolated containers. 
 Use multiple totes in the same app, with minimal overhead and no fear of key collisions.</p>
@@ -73,7 +73,13 @@ prefs.set(&#39;fullName&#39;, &#39;Blazing Hoofs&#39;);
 
 // Look at EVERYTHING in our tote and check the size
 console.log( prefs.all() );
-// [500, 35.99, -25, true, &quot;Blazing Hoofs&quot;] 
+// [
+//   { key: &quot;count&quot;: value: 500 }, 
+//   { key: &quot;cost&quot;, value: 35.99 }, 
+//   { key: &quot;temperature&quot;, value: -25 }, 
+//   { key: &quot;isActive&quot;, value: true }, 
+//   { key: &quot;fullName&quot;, value: &quot;Blazing Hoofs&quot; } 
+// ] 
 console.log( prefs.length() );
 // 5
 
@@ -88,7 +94,10 @@ prefs.remove(&#39;fullName&#39;);
 
 // What are we left with?
 console.log( prefs.all() );
-// [35.99, true]
+// [
+//   { key: &quot;cost&quot;, value: 35.99 }, 
+//   { key: &quot;isActive&quot;, value: true }
+// ]
 console.log( prefs.length() );
 // 2
 
