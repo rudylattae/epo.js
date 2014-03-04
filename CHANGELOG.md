@@ -1,3 +1,12 @@
+<a name="v0.3.0-a"></a>
+## v0.3.0-a (Mar 03 2014)
+
+### Enhancements
+
+- Re-implemented `all()` to always return a list of key value pairs
+-- This method no longer accepts parameters that change how the return data is formatted.
+
+
 <a name="v0.2.2-a"></a>
 ## v0.2.2-a (Feb 15 2014)
 

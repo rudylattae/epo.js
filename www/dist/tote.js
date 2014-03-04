@@ -49,34 +49,30 @@
         index.remove( key );
       },
 
-      all: function all( format ) {
-        var items = [],
-          keys = index.all(),
-          i=0,
-          z=keys.length,
-          formatter = getFormatter( format ),
-          key;
-
-        for( ; i<z; i++ ) {
-          key = keys[i];
-          if ( format )
-            items.push( formatter(key, this.getItem(key)) );
-          else
-            items.push( this.getItem(key) );
-        }
-        return items;
-      },
-
-      clear: function clear() {
-        clearAllTrackedItems();
-      },
-
       key: function key( pos ) {
         return index.getKeyAt(pos);
       },
 
       length: function length() {
         return index.length();
+      },
+
+      clear: function clear() {
+        clearAllTrackedItems();
+      },
+
+      all: function all() {
+        var items = [],
+          keys = index.all(),
+          i=0,
+          z=keys.length,
+          key;
+
+        for( ; i<z; i++ ) {
+          key = keys[i];
+          items.push({ key: key, value: this.getItem(key) });
+        }
+        return items;
       }
     };
     wrapper.set = wrapper.setItem;
@@ -136,31 +132,6 @@
       }
     };
   }
-
-
-  function getFormatter( format ) {
-    if ( format && format.compact ) {
-      return formatters.asCompact;
-    }
-
-    if ( format && format.kvp ) {
-      return formatters.asKvp;
-    }
-
-    return null;
-  }
-
-  var formatters = {
-    asCompact: function asCompact( key, value ) {
-      var item = {};
-      item[key] = value;
-      return item;
-    },
-
-    asKvp: function asKvp(key, value ) {
-      return { key: key, value: value };
-    }
-  };
 
 
   // exports
