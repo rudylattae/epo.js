@@ -100,7 +100,6 @@ console.log( prefs.all() );
 console.log( prefs.length() );
 // 2
 
-
 // You can figure out the key for the value 
 // at position 'n'. Like this:
 console.log( prefs.key(1) );
