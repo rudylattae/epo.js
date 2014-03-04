@@ -81,7 +81,13 @@ prefs.set('fullName', 'Blazing Hoofs');
 
 // Look at EVERYTHING in our tote and check the size
 console.log( prefs.all() );
-// [500, 35.99, -25, true, "Blazing Hoofs"] 
+// [
+//   { key: "count": value: 500 }, 
+//   { key: "cost", value: 35.99 }, 
+//   { key: "temperature", value: -25 }, 
+//   { key: "isActive", value: true }, 
+//   { key: "fullName", value: "Blazing Hoofs" } 
+// ] 
 console.log( prefs.length() );
 // 5
 
@@ -96,7 +102,10 @@ prefs.remove('fullName');
 
 // What are we left with?
 console.log( prefs.all() );
-// [35.99, true]
+// [
+//   { key: "cost", value: 35.99 }, 
+//   { key: "isActive", value: true }
+// ]
 console.log( prefs.length() );
 // 2
 

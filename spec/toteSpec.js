@@ -81,39 +81,13 @@ describe('tote', function() {
       expect( ls.get(key2) ).toEqual( value );
     });
 
-    it('#all, returns an array of all values', function() {
-      var key1 = 'x',
-        value1 = 'The simple things',
-        key2 = 'y',
-        value2 = 'Are free?';
-      ls.set( key1, value1 );
-      ls.set( key2, value2 );
-
-      var all = ls.all();
-      
-      expect( all[0] ).toEqual( value1 );
-      expect( all[1] ).toEqual( value2 );
-    });
-
-    it('#all({compact:true}), returns an array of a compact representation of all items', function() {
-      var item1 = { 'a': 'Me' },
-        item2 = { 'b': 'You' };
-      ls.set( 'a', item1.a );
-      ls.set( 'b', item2.b );
-
-      var all = ls.all( {compact:true} );
-      
-      expect( all[0] ).toEqual( item1 );
-      expect( all[1] ).toEqual( item2 );
-    });
-
-    it('#all({kvp:true}), returns an array key-value pairs stored in namespace', function() {
+    it('#all(), returns an of array key-value pairs stored in namespace', function() {
       var item1 = { key:'x', value:'Me' },
         item2 = { key:'y', value:'You' };
       ls.set( item1.key, item1.value );
       ls.set( item2.key, item2.value );
 
-      var all = ls.all( {kvp:true} );
+      var all = ls.all();
       
       expect( all[0] ).toEqual( item1 );
       expect( all[1] ).toEqual( item2 );
@@ -351,8 +325,8 @@ describe('tote', function() {
       ls1.set( key1, value1 );
       ls1.set( key2, value2 );
       
-      expect( ls2.all()[0] ).toEqual( value1 );
-      expect( ls2.all()[1] ).toEqual( value2 );
+      expect( ls2.all()[0].value ).toEqual( value1 );
+      expect( ls2.all()[1].value ).toEqual( value2 );
     });
   });
 });

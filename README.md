@@ -61,16 +61,8 @@ prefs.set('total', 4560);
 prefs.set('average', 22.45);
 prefs.set('isActive', true);
 
-// Get all stored values as a list...
+// Get all stored values as a list of key-value pairs [{key:'KEY', value:'VALUE'}, ]
 prefs.all()
-// ["http://example.com/my/logo.png", "es", 4560, 22.45, true]
-
-// ... or a compact list of key,value objects [{key:value}, ]...
-prefs.all({compact:true})
-// [logo: "http://example.com/my/logo.png", language: "es", total: 4560, average: 22.45, isActive: true]
-
-// ... or a list of key-value pairs [{key:'KEY', value:'VALUE'}, ]
-prefs.all({kvp:true})
 /*
 [
     { key: "logo", value: "http://example.com/my/logo.png" },
@@ -96,8 +88,6 @@ prefs.all()
 - get(key) || getItem(key)
 - remove(key) || removeItem(key)
 - all()
--- all({compact:true})
--- all({kvp:true})
 - clear()
 - length()
 - key(n)
