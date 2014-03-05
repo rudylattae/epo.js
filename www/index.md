@@ -151,9 +151,7 @@ Delete the `value` stored with `key`
 
 #### all()
 
-Retrieve an array of all the 
-- all({compact:true})
-- all({kvp:true})
+Retrieve an array of all the values stored in this namespace.
 
 #### clear()
 
