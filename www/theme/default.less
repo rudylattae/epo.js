@@ -18,7 +18,7 @@
 @body-background: @black-80;
 @text-color: @brand-normal;
 
-@header-background-color: #212121;
+@header-background-color: @black-90;
 @header-background: @header-background-color;
 @header-text-color: @brand-loud;
 
@@ -85,6 +85,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 h2 {
   margin-top: 1.2em;
+  margin-bottom: 0.3em;
+  font-size: 1.8em;
+  font-weight: normal;
 }
 
 em, strong {
@@ -117,6 +120,12 @@ dl {
     font-weight: bold;
   }
 }
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: darken(@black-80, 10%);
+}
+
 
 code {
   font-size: 0.85em;
@@ -264,7 +273,7 @@ body {
   }
 
   &>.preface {
-    #gradient > .vertical(@header-background-color, @body-background);
+    background: @body-background;
   }
 
   &>main {
@@ -308,7 +317,7 @@ nav.main {
     padding: 0;
 
     li {
-      margin-right: 1.2em;
+      margin-right: 1em;
       float: left;
 
       iframe {
