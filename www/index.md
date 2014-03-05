@@ -8,7 +8,7 @@ Use multiple totes in the same app, with minimal overhead and no fear of key col
 
 - Use localStorage through isolated containers -- namespaces
 - What you store is what you get -- Number, Boolean, Object, Array, String (of course)...
-- Simple API, about seven (7) methods with some compatibility aliases to boot.
+- Simple API, about seven (7) methods -- fully compatible with native methods.
 
 
 <a name="quickstart"></a>
