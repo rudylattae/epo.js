@@ -20,7 +20,7 @@ Use multiple totes in the same app, with minimal overhead and no fear of key col
 <ul>
 <li>Use localStorage through isolated containers -- namespaces</li>
 <li>What you store is what you get -- Number, Boolean, Object, Array, String (of course)...</li>
-<li>Simple API, about seven (7) methods with some compatibility aliases to boot.</li>
+<li>Simple API, about seven (7) methods -- fully compatible with native methods.</li>
 </ul>
 <p><a name="quickstart"></a></p>
 <h2>Quickstart</h2>
@@ -128,9 +128,7 @@ You may see the <a href="#api">API documentation</a> below for a clean list and 
 <p>Aliases: removeItem(key)</p>
 <p>Delete the <code>value</code> stored with <code>key</code></p>
 <h4>all()</h4>
-<p>Retrieve an array of all the 
-- all({compact:true})
-- all({kvp:true})</p>
+<p>Retrieve an array of all the values stored in this namespace.</p>
 <h4>clear()</h4>
 <p>Delete <em>all</em> the values stored in this namespace.</p>
 <h4>length()</h4>
