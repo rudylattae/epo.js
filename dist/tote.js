@@ -3,21 +3,8 @@
   http://rudylattae.github.io/tote
   (c) 2014 Rudy Lattae <rudylattae@gmail.com>, MIT License
  */
-(function( g ) {
+var tote = (function( g ) {
   'use strict';
-
-  function tote( name, options ) {
-    if ( !name || name === '' ) {
-      throw new Error('A tote must have a non-empty namespace');
-    }
-
-    options = options || {};
-
-    var storageAdapter = options.storageAdapter || g.localStorage,
-      index = options.index || createIndex( name, storageAdapter );
-      
-    return createStorageWrapper( name, storageAdapter, index );
-  }
 
 
   function createStorageWrapper( name, store, index ) {
@@ -139,9 +126,24 @@
   }
 
 
-  // exports
+  // api
+  function tote( name, options ) {
+    if ( !name || name === '' ) {
+      throw new Error('A tote must have a non-empty namespace');
+    }
+
+    options = options || {};
+
+    var storageAdapter = options.storageAdapter || g.localStorage,
+      index = options.index || createIndex( name, storageAdapter );
+      
+    return createStorageWrapper( name, storageAdapter, index );
+  }
+
   tote.createIndex = createIndex;
   tote.createStorageWrapper = createStorageWrapper;
 
-  g.tote = tote;
+
+  // exports
+  return tote;
 }( window ));
