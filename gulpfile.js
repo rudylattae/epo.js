@@ -23,12 +23,10 @@ var paths = {
   spec: './spec'
 };
 
-var banner = ['/**',
-  ' * <%= pkg.name %> - <%= pkg.description %>',
-  ' * @version v<%= pkg.version %>',
-  ' * @link <%= pkg.homepage %>',
-  ' * @license <%= pkg.license %>',
-  ' * @copyright <%= pkg.author %>',
+var banner = ['/*!',
+  '  <%= pkg.name %> v<%= pkg.version %> -- <%= pkg.description %>',
+  '  <%= pkg.homepage %>',
+  '  (c) 2014 <%= pkg.author %>, <%= pkg.license %> License',
   ' */',
   ''].join('\n');
 
@@ -43,12 +41,11 @@ gulp.task('package', ['lint'], function() {
   return gulp.src(paths.src)
     .pipe(concat(pkg.name + '.js'))
     .pipe(size())
-    .pipe(header(banner, {pkg: pkg}))
+    .pipe(header(banner, { pkg: pkg }))
     .pipe(gulp.dest(paths.dist))
     .pipe(rename(pkg.name + '.min.js'))
-    .pipe(uglify())
+    .pipe(uglify({ preserveComments: 'some' }))
     .pipe(size())
-    .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest(paths.dist));
 });
 

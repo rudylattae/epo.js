@@ -1,9 +1,7 @@
-/**
- * tote - A thin namespaced wrapper for localStorage
- * @version v0.3.0-a
- * @link http://rudylattae.github.io/tote
- * @license MIT
- * @copyright Rudy Lattae <rudylattae@gmail.com>
+/*!
+  tote v0.3.0-a -- A thin namespaced wrapper for localStorage
+  http://rudylattae.github.io/tote
+  (c) 2014 Rudy Lattae <rudylattae@gmail.com>, MIT License
  */
 (function( g ) {
   'use strict';
