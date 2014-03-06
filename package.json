@@ -1,7 +1,8 @@
 {
   "name": "tote",
   "version": "0.3.0-a",
-  "description": "Thin namespaced wrapper for localStorage",
+  "description": "A thin namespaced wrapper for localStorage",
+  "homepage": "http://rudylattae.github.io/tote",
   "main": "tote.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -37,6 +38,7 @@
     "gulp-size": "^0.1.3",
     "run-sequence": "^0.3.6",
     "gulp-exec": "^1.0.4",
-    "gulp-task-listing": "~0.2.2"
+    "gulp-task-listing": "~0.2.2",
+    "gulp-header": "~1.0.2"
   }
 }

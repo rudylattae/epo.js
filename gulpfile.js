@@ -11,6 +11,7 @@ var gulp = require('gulp'),
   size = require('gulp-size'),
   runSequence = require('run-sequence'),
   help = require('gulp-task-listing'),
+  header = require('gulp-header'),
   pkg = require('./package.json');
 
 
@@ -21,6 +22,15 @@ var paths = {
   dist: './dist',
   spec: './spec'
 };
+
+var banner = ['/**',
+  ' * <%= pkg.name %> - <%= pkg.description %>',
+  ' * @version v<%= pkg.version %>',
+  ' * @link <%= pkg.homepage %>',
+  ' * @license <%= pkg.license %>',
+  ' * @copyright <%= pkg.author %>',
+  ' */',
+  ''].join('\n');
 
 
 gulp.task('lint', function() {
@@ -33,10 +43,12 @@ gulp.task('package', ['lint'], function() {
   return gulp.src(paths.src)
     .pipe(concat(pkg.name + '.js'))
     .pipe(size())
+    .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest(paths.dist))
     .pipe(rename(pkg.name + '.min.js'))
     .pipe(uglify())
     .pipe(size())
+    .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest(paths.dist));
 });
 
