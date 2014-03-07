@@ -31,10 +31,6 @@ var banner = ['/*!',
   ' */',
   ''].join('\n');
 
-var umdWrapper = ['//UMD', 
-  '<%= contents %>',
-  '// UMD'].join('\n');
-
 
 gulp.task('lint', function() {
   return gulp.src(paths.allJs)
