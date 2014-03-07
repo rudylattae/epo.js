@@ -12,6 +12,7 @@ var gulp = require('gulp'),
   runSequence = require('run-sequence'),
   help = require('gulp-task-listing'),
   header = require('gulp-header'),
+  wrap = require('gulp-wrap-umd'),
   pkg = require('./package.json');
 
 
@@ -30,6 +31,10 @@ var banner = ['/*!',
   ' */',
   ''].join('\n');
 
+var umdWrapper = ['//UMD', 
+  '<%= contents %>',
+  '// UMD'].join('\n');
+
 
 gulp.task('lint', function() {
   return gulp.src(paths.allJs)
@@ -37,13 +42,30 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('package', ['lint'], function() {
+gulp.task('package', ['package-umd', 'package-embed'], function() {
+  // ...
+});
+
+gulp.task('package-umd', ['lint'], function() {
   return gulp.src(paths.src)
     .pipe(concat(pkg.name + '.js'))
     .pipe(size())
+    .pipe(wrap({ namespace: 'tote', exports: 'tote' }))
     .pipe(header(banner, { pkg: pkg }))
     .pipe(gulp.dest(paths.dist))
     .pipe(rename(pkg.name + '.min.js'))
+    .pipe(uglify({ preserveComments: 'some' }))
+    .pipe(size())
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('package-embed', ['lint'], function() {
+  return gulp.src(paths.src)
+    .pipe(concat(pkg.name + '-embed.js'))
+    .pipe(size())
+    .pipe(header(banner, { pkg: pkg }))
+    .pipe(gulp.dest(paths.dist))
+    .pipe(rename(pkg.name + '-embed.min.js'))
     .pipe(uglify({ preserveComments: 'some' }))
     .pipe(size())
     .pipe(gulp.dest(paths.dist));
