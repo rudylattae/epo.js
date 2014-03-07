@@ -36,15 +36,26 @@ OR install it:
 
 ### Import
 
-If you want to use `tote` as a regular browser global, just include it in your webpage:
+To use `tote` in an AMD loader environment, you may:
+
+```javascript
+// myModule.js
+define(['tote'], function( tote ){
+  // do something interesting...
+});
+```
+
+In node.js or using a Common JS loader, you may:
+
+```javascript
+var tote = require('tote')
+```
+
+If you want to use `tote` as a regular browser global, just include it in your markup:
 
 ```markup
 <script src="lib/tote.js" type="text/javascript"></script>
 ```
-
-OR if you are an an environment with module a loader...
-
-<small class="muted">AMD / CJS support coming soon.</small>
 
 
 ### Basic usage example

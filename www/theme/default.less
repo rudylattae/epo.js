@@ -110,7 +110,7 @@ a {
 
 dl {
   padding: 0.5em;
-
+  .clearfix;
   dt:after {
     content: ":";
   }
@@ -118,6 +118,10 @@ dl {
     margin-bottom: 0.6em;
     margin-left: 0;
     font-weight: bold;
+  }
+
+  hr {
+    width: 100%;
   }
 }
 
@@ -192,7 +196,7 @@ small {
   }
 }
 
-.btn {
+.btn, a.btn {
   display: block;
   padding: 15px 20px;
   margin-bottom: 5px;
@@ -222,12 +226,13 @@ small {
   }
 }
 
-.btn-primary, .btn-primary:visited {
+.btn-primary, a.btn-primary,
+.btn-primary:visited, a.btn-primary:visited {
   background-color: darken(@brand-primary, 10%);
   color: @black-20;
   border-color: darken(@brand-primary, 5%);
 }
-.btn-primary {
+.btn-primary, a.btn-primary {
   &:hover, &:active, &:focus {
     color: @black-90;
     text-decoration: none;
@@ -236,9 +241,17 @@ small {
   }
 }
 
+.btn-small, a.btn-small {
+  font-weight: normal;
+  padding: 10px 15px;
+
+  &:hover, &:focus {
+    font-weight: normal;
+  }
+}
+
 .divider {
-  margin-top: 1.8em;
-  margin-bottom: 0;
+  margin-top: 1.5em;
   border: 0;
   height: 1px;
   .linear-gradient(@midColor:rgba(255,255,255,0.2));
@@ -349,7 +362,6 @@ nav.main {
 
   dl {
     .clearfix;
-    height: 13.2em;
     dt {
       float: left;
       clear: left;
@@ -367,7 +379,7 @@ nav.main {
       display: inline-block;
       float: left;
       clear: right;
-      width: 60%;
+      width: 65%;
     }
   }
 
@@ -378,7 +390,7 @@ nav.main {
     }
   }
 
-  .btn {
+  .btn, a.btn {
     display: inline-block;
     margin-right: 0.5em;
   }

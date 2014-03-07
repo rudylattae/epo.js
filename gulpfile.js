@@ -12,13 +12,14 @@ var gulp = require('gulp'),
   runSequence = require('run-sequence'),
   help = require('gulp-task-listing'),
   header = require('gulp-header'),
+  wrap = require('gulp-wrap-umd'),
   pkg = require('./package.json');
 
 
 var paths = {
   pkg: './package.json',
   src: './tote.js',
-  allJs: [ './gulpfile.js', './tote.js', './www/spec/toteSpec.js' ],
+  others: ['./gulpfile.js', './spec/toteSpec.js'],
   dist: './dist',
   spec: './spec'
 };
@@ -31,16 +32,11 @@ var banner = ['/*!',
   ''].join('\n');
 
 
-gulp.task('lint', function() {
-  return gulp.src(paths.allJs)
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('package', ['lint'], function() {
+gulp.task('package-umd', function() {
   return gulp.src(paths.src)
     .pipe(concat(pkg.name + '.js'))
     .pipe(size())
+    .pipe(wrap({ namespace: 'tote', exports: 'tote' }))
     .pipe(header(banner, { pkg: pkg }))
     .pipe(gulp.dest(paths.dist))
     .pipe(rename(pkg.name + '.min.js'))
@@ -49,41 +45,63 @@ gulp.task('package', ['lint'], function() {
     .pipe(gulp.dest(paths.dist));
 });
 
+gulp.task('package-embed', function() {
+  return gulp.src(paths.src)
+    .pipe(concat(pkg.name + '-embed.js'))
+    .pipe(size())
+    .pipe(header(banner, { pkg: pkg }))
+    .pipe(gulp.dest(paths.dist))
+    .pipe(rename(pkg.name + '-embed.min.js'))
+    .pipe(uglify({ preserveComments: 'some' }))
+    .pipe(size())
+    .pipe(gulp.dest(paths.dist));
+});
 
-gulp.task('check-features', function() {
+gulp.task('lint', function() {
+  return gulp.src([paths.dist].concat(paths.others))
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('jshint-stylish'));
+});
+
+
+// run specs in webkit only
+gulp.task('check-one', function() {
   return gulp.src('.')
     .pipe(exec('testem ci -l PhantomJS'));
 });
 
-gulp.task('check-compatibility', function() {
+// run specs in all available browsers
+gulp.task('check-all', function() {
   return gulp.src('.')
     .pipe(exec('testem ci --parallel 5'));
 });
 
-
-gulp.task('publish-dist', function() {
+// copy dist dir (packages) to website source
+gulp.task('copy-dist', function() {
   return gulp.src('.')
     .pipe(exec('cp -r ' + paths.dist + ' ./www'));
 });
 
-gulp.task('publish-spec', function() {
+// copy spec dir (technical + feature specs) to website source
+gulp.task('copy-spec', function() {
   return gulp.src('.')
     .pipe(exec('cp -r ' + paths.spec + ' ./www'));
 });
 
-gulp.task('build-website', function() {
+// generate static website in staging repo
+// NOTE: in this case, _gh-pages is a clone of the gh-pages branch
+gulp.task('stage-website', function() {
   return gulp.src('.')
-    .pipe(exec('harp compile ./www ./_www'));
+    .pipe(exec('harp compile ./www ./_gh-pages'));
 });
 
-
-gulp.task('bump', function() {
+gulp.task('bump-version', function() {
   return gulp.src(paths.pkg)
     .pipe(bump())
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('tag', function () {
+gulp.task('tag-release', function () {
   var version = 'v' + pkg.version,
     message = 'Release ' + version;
 
@@ -94,26 +112,45 @@ gulp.task('tag', function () {
     .pipe(gulp.dest('./'));
 });
 
-// show task list
+
+// help: show task list
+// =====================
 gulp.task('help', help);
 
 
 // development 
-gulp.task('develop', ['package', 'check-features'], function() {
-  gulp.watch(paths.allJs, ['package', 'check-features']);
+// ============
+gulp.task('develop', ['package'], function() {
+  gulp.watch([paths.pkg, paths.src, paths.spec].concat(paths.others), ['package']);
 });
 
 
-// should only be run on master branch
+// packaging
+// ==========
+gulp.task('package', function(done) {
+  runSequence('package-embed', 'package-umd', 'lint', done);
+});
+
+
+// shipping
+// =========
+
+// ** next or master only **
 gulp.task('prepare', function(done) {
-  runSequence('package', 'check-compatibility', 'bump', 'tag', done);
+  runSequence('package', 'check-all', ['copy-dist', 'copy-spec'], done);
 });
 
+// ** master only **
 gulp.task('release', function(done) {
-  runSequence('check-compatibility', ['publish-dist', 'publish-spec'], 'build-website', done);
+  runSequence('bump-version', 'tag-release', done);
 });
 
-// defaul task
+// ** master only **
+gulp.task('stage', ['stage-website'], function() {});
+
+
+// default
+// ========
 gulp.task('default', function(done) {
-  runSequence('package', 'check-features', done);
+  runSequence('package', 'check-one', done);
 });

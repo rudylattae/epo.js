@@ -39,6 +39,9 @@
     "run-sequence": "^0.3.6",
     "gulp-exec": "^1.0.4",
     "gulp-task-listing": "~0.2.2",
-    "gulp-header": "~1.0.2"
+    "gulp-header": "~1.0.2",
+    "gulp-wrap": "~0.3.0",
+    "gulp-wrap-umd": "~0.2.0",
+    "gulp-clean": "~0.2.4"
   }
 }

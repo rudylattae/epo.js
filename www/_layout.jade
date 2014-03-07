@@ -6,7 +6,7 @@ html
     meta( name="description", content=description )
     title = title
     link( rel="stylesheet", href="http://fonts.googleapis.com/css?family=Maven+Pro" )
-    link( rel="stylesheet", href="theme/default.css" media="screen" )
+    link( rel="stylesheet", href="/theme/default.css" media="screen" )
     script( type="text/javascript", src="dist/tote.js" )
   body
 
@@ -55,7 +55,7 @@ html
             // null
             ```
 
-        section.pulse.col-6
+        section.facts.col-6
           dl.well.muted
             dt Status
             dd Unstable Aplha
@@ -64,8 +64,6 @@ html
               date #{releaseDate}
             dt License
             dd Open Source -- MIT
-            dt Install with
-            dd Bower, Component... soon
             dt Environments
             dd Browser
             dt Resources
@@ -77,9 +75,17 @@ html
               a( href="https://github.com/rudylattae/tote", title="Source repo and issue tracker" ) GitHub
               , 
               a( href="https://huboard.com/rudylattae/tote", title="Project Roadmap and Kanban board" ) Huboard
-
-          a(href="dist/tote.js" class="btn btn-primary") Development (4.2k)
-          a(href="dist/tote.min.js" class="btn") Minified (1.4k)
+            hr.divider
+            dt Install with
+            dd Bower, Component... soon
+            dt Download
+            dd
+              a(href="dist/tote.js" class="btn btn-primary btn-small") Full (4.2k)
+              a(href="dist/tote.min.js" class="btn btn-small") Minified (1.4k)
+            dt Embed
+            dd
+              a(href="dist/tote-embed.js" class="btn btn-small") Full (4.2k)
+              a(href="dist/tote-embed.min.js" class="btn btn-small") Minified (1.4k)
 
       .row.centered
         hr.divider
